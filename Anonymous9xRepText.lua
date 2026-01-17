@@ -1,5 +1,5 @@
--- Anonymous9x_RepText v1.1 MOBILE FRIENDLY
--- RESPONSIVE & DRAGGABLE
+-- Anonymous9x_RepText v2.0
+-- MOBILE FRIENDLY + MINIMIZE FEATURE
 
 local Players = game:GetService('Players')
 local player = Players.LocalPlayer
@@ -15,10 +15,10 @@ screenGui.Name = "Anonymous9xRepText"
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 screenGui.ResetOnSpawn = false
 
--- Main Frame - UKURAN RESPONSIVE UNTUK HP
+-- Main Frame
 local mainFrame = Instance.new("Frame")
 mainFrame.Name = "MainFrame"
-mainFrame.Size = UDim2.new(0.85, 0, 0, 500)  -- 85% lebar layar
+mainFrame.Size = UDim2.new(0.85, 0, 0, 500)
 mainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 mainFrame.BackgroundColor3 = Color3.fromRGB(15, 20, 30)
 mainFrame.BorderSizePixel = 0
@@ -29,7 +29,7 @@ local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 12)
 corner.Parent = mainFrame
 
--- Title Bar - BISA DIGESER
+-- Title Bar
 local titleBar = Instance.new("Frame")
 titleBar.Name = "TitleBar"
 titleBar.Size = UDim2.new(1, 0, 0, 45)
@@ -40,39 +40,66 @@ local titleCorner = Instance.new("UICorner")
 titleCorner.CornerRadius = UDim.new(0, 12, 0, 0)
 titleCorner.Parent = titleBar
 
--- Title Text
-local title = Instance.new("TextLabel")
-title.Size = UDim2.new(0.7, 0, 1, 0)
-title.Position = UDim2.new(0, 15, 0, 0)
-title.BackgroundTransparency = 1
-title.Text = "🔐 ANONYMOUS9X REPTEXT"
-title.TextColor3 = Color3.fromRGB(220, 230, 255)
-title.Font = Enum.Font.GothamBold
-title.TextSize = 18
-title.TextXAlignment = Enum.TextXAlignment.Left
-title.Parent = titleBar
+-- Logo ANONYMOUS9X TEAM
+local logoFrame = Instance.new("Frame")
+logoFrame.Name = "LogoFrame"
+logoFrame.Size = UDim2.new(0, 120, 0, 30)
+logoFrame.Position = UDim2.new(0.5, -60, 0.5, -15)
+logoFrame.BackgroundTransparency = 1
+logoFrame.Parent = titleBar
+
+-- Logo Text
+local logoText = Instance.new("TextLabel")
+logoText.Name = "LogoText"
+logoText.Size = UDim2.new(1, 0, 1, 0)
+logoText.BackgroundTransparency = 1
+logoText.Text = "ANONYMOUS9X\nTEAM"
+logoText.TextColor3 = Color3.fromRGB(220, 230, 255)
+logoText.Font = Enum.Font.GothamBold
+logoText.TextSize = 12
+logoText.TextYAlignment = Enum.TextYAlignment.Center
+logoText.TextXAlignment = Enum.TextXAlignment.Center
+logoText.Parent = logoFrame
+
+-- Minimize Button (icon garis 3)
+local minimizeBtn = Instance.new("TextButton")
+minimizeBtn.Name = "MinimizeBtn"
+minimizeBtn.Size = UDim2.new(0, 30, 0, 30)
+minimizeBtn.Position = UDim2.new(1, -75, 0.5, -15)
+minimizeBtn.BackgroundColor3 = Color3.fromRGB(50, 100, 200)
+minimizeBtn.Text = "━"
+minimizeBtn.TextColor3 = Color3.new(1,1,1)
+minimizeBtn.Font = Enum.Font.GothamBold
+minimizeBtn.TextSize = 20
+minimizeBtn.Parent = titleBar
+
+local minimizeCorner = Instance.new("UICorner")
+minimizeCorner.CornerRadius = UDim.new(0, 6)
+minimizeCorner.Parent = minimizeBtn
 
 -- Close Button
 local closeBtn = Instance.new("TextButton")
-closeBtn.Size = UDim2.new(0, 35, 0, 35)
-closeBtn.Position = UDim2.new(1, -40, 0.5, -17.5)
+closeBtn.Name = "CloseBtn"
+closeBtn.Size = UDim2.new(0, 30, 0, 30)
+closeBtn.Position = UDim2.new(1, -35, 0.5, -15)
 closeBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-closeBtn.Text = "X"
+closeBtn.Text = "✕"
 closeBtn.TextColor3 = Color3.new(1,1,1)
 closeBtn.Font = Enum.Font.GothamBold
 closeBtn.TextSize = 18
 closeBtn.Parent = titleBar
 
 local closeCorner = Instance.new("UICorner")
-closeCorner.CornerRadius = UDim.new(0, 8)
+closeCorner.CornerRadius = UDim.new(0, 6)
 closeCorner.Parent = closeBtn
 
--- Content Area
+-- Content Area (bisa di hide/show)
 local contentFrame = Instance.new("Frame")
 contentFrame.Name = "ContentFrame"
 contentFrame.Size = UDim2.new(1, -20, 1, -65)
 contentFrame.Position = UDim2.new(0, 10, 0, 55)
 contentFrame.BackgroundTransparency = 1
+contentFrame.Visible = true
 contentFrame.Parent = mainFrame
 
 -- Dropdown
@@ -117,14 +144,19 @@ padding.PaddingRight = UDim.new(0, 8)
 padding.PaddingBottom = UDim.new(0, 8)
 padding.Parent = optionsFrame
 
--- Report Options
+-- Report Options (FIXED - TEKS LENGKAP)
 local reports = {
-    ["🚫 NSFW Avatar Bypass"] = "I'm reporting NSFW 'bypass' avatar items. This violates Roblox's Community Standards on Sexual Content.",
-    ["🔞 Sexualized Avatar"] = "Reporting a sexualized avatar with inappropriate appearances. This violates safety guidelines.",
-    ["🎭 Scamming & Fraud"] = "Reporting a scam/fraud promising free Robux or items. Violates Terms of Service.",
-    ["💢 Harassment & Hate Speech"] = "Reporting harassment, hate speech, bullying, or threats in chat/username.",
-    ["⚡ Exploiting & Cheating"] = "Reporting a player using exploits/cheats for unfair advantages.",
-    ["⚠️ Multiple Violations"] = "Reporting multiple violations: NSFW content, scamming, harassment, and exploiting."
+    ["🚫 NSFW Avatar Bypass"] = "I'm reporting NSFW 'bypass' avatar items. A user/asset is using textures/accessories designed to bypass clothing filters to create nude or sexually explicit avatars. This violates Roblox's Community Standards on Sexual Content.",
+    
+    ["🔞 Sexualized Avatar"] = "Reporting a sexualized avatar. The user's avatar contains sexually suggestive or explicit appearances, including mesh combinations mimicking nudity or private body parts. This is inappropriate for Roblox's all-ages platform and violates safety guidelines.",
+    
+    ["🎭 Scamming & Fraud"] = "Reporting a scam/fraud incident. A user/experience is promising free Robux, rare items, or special privileges in exchange for login details, real money, or completing surveys. This is a clear violation of Roblox's Terms of Service regarding scams and fraudulent activity.",
+    
+    ["💢 Harassment & Hate Speech"] = "Reporting severe harassment and hate speech. A user is using the chat, username, or display name to send bullying messages, hate speech based on race/religion/gender, threats, or extreme profanity. This creates a toxic and unsafe environment for other players.",
+    
+    ["⚡ Exploiting & Cheating"] = "Reporting a player who is using exploits/cheats. The user is utilizing third-party software or scripts to gain unfair advantages like flying, noclip, speed hacking, or modifying the game in ways that ruin the experience for others. This violates the Roblox Terms of Service.",
+    
+    ["⚠️ Multiple Violations"] = "I am reporting multiple serious violations by a user/group. This includes: 1) Creating/using NSFW 'bypass' avatars, 2) Engaging in scams/fraud, 3) Harassment/hate speech, and 4) Exploiting/cheating. This behavior severely breaches Roblox's Community Standards and creates an unsafe platform environment."
 }
 
 for name, desc in pairs(reports) do
@@ -144,13 +176,14 @@ for name, desc in pairs(reports) do
     
     btn.MouseButton1Click:Connect(function()
         dropdown.Text = "  ✓ " .. name
-        textBox.Text = desc
+        textBox.Text = desc  -- INI PASTI DAPAT TEKSNYA
         optionsFrame.Visible = false
     end)
 end
 
 -- Text Box
 local textBox = Instance.new("TextBox")
+textBox.Name = "ReportTextBox"
 textBox.Size = UDim2.new(1, 0, 0, 150)
 textBox.Position = UDim2.new(0, 0, 0, 240)
 textBox.BackgroundColor3 = Color3.fromRGB(20, 25, 40)
@@ -161,6 +194,7 @@ textBox.TextWrapped = true
 textBox.Text = "Select report type above..."
 textBox.MultiLine = true
 textBox.TextYAlignment = Enum.TextYAlignment.Top
+textBox.ClearTextOnFocus = false
 textBox.Parent = contentFrame
 
 local textCorner = Instance.new("UICorner")
@@ -176,6 +210,7 @@ textPadding.Parent = textBox
 
 -- Copy Button
 local copyBtn = Instance.new("TextButton")
+copyBtn.Name = "CopyButton"
 copyBtn.Size = UDim2.new(1, 0, 0, 45)
 copyBtn.Position = UDim2.new(0, 0, 1, -50)
 copyBtn.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
@@ -191,6 +226,7 @@ copyCorner.Parent = copyBtn
 
 -- Status
 local status = Instance.new("TextLabel")
+status.Name = "StatusLabel"
 status.Size = UDim2.new(1, 0, 0, 25)
 status.Position = UDim2.new(0, 0, 1, -20)
 status.BackgroundTransparency = 1
@@ -201,7 +237,9 @@ status.TextSize = 13
 status.TextXAlignment = Enum.TextXAlignment.Center
 status.Parent = contentFrame
 
--- FUNGSI DRAGGABLE (BISA DIGESER)
+-- ========== FUNGSI UTAMA ==========
+
+-- FUNGSI DRAGGABLE
 local dragging = false
 local dragStart, startPos
 
@@ -235,29 +273,69 @@ titleBar.InputChanged:Connect(function(input)
     end
 end)
 
+-- FUNGSI MINIMIZE/MAXIMIZE
+local isMinimized = false
+local originalSize = mainFrame.Size
+local minimizedSize = UDim2.new(0.85, 0, 0, 45)  -- Hanya title bar
+
+minimizeBtn.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    
+    if isMinimized then
+        -- Minimize: sembunyikan content
+        contentFrame.Visible = false
+        mainFrame:TweenSize(minimizedSize, Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.3)
+        minimizeBtn.Text = "＋"
+        minimizeBtn.BackgroundColor3 = Color3.fromRGB(50, 150, 100)
+    else
+        -- Maximize: tampilkan content
+        contentFrame.Visible = true
+        mainFrame:TweenSize(originalSize, Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.3)
+        minimizeBtn.Text = "━"
+        minimizeBtn.BackgroundColor3 = Color3.fromRGB(50, 100, 200)
+    end
+end)
+
 -- FUNGSI DROPDOWN
 dropdown.MouseButton1Click:Connect(function()
     optionsFrame.Visible = not optionsFrame.Visible
 end)
 
--- FUNGSI COPY
+-- FUNGSI COPY (FIXED - PASTI DAPAT TEKS)
 copyBtn.MouseButton1Click:Connect(function()
-    if textBox.Text ~= "Select report type above..." then
-        if setclipboard then
-            setclipboard(textBox.Text)
+    local currentText = textBox.Text
+    
+    if currentText ~= "" and currentText ~= "Select report type above..." then
+        -- Coba pakai setclipboard
+        local success, result = pcall(function()
+            if setclipboard then
+                setclipboard(currentText)
+                return true
+            end
+            return false
+        end)
+        
+        if success and result then
+            -- Sukses copy
             copyBtn.Text = "✅ COPIED!"
-            copyBtn.BackgroundColor3 = Color3.fromRGB(50, 180, 80)
-            status.Text = "✓ Text copied! Paste in Roblox report form"
-            task.wait(1.5)
+            copyBtn.BackgroundColor3 = Color3.fromRGB(50, 200, 80)
+            status.Text = "✓ Text copied to clipboard!"
+            status.TextColor3 = Color3.fromRGB(100, 255, 100)
+            
+            -- Reset button setelah 2 detik
+            task.wait(2)
             copyBtn.Text = "📋 COPY TEXT"
             copyBtn.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
         else
+            -- Fallback: select text
             textBox:CaptureFocus()
             textBox:SelectAll()
-            status.Text = "⚠️ Select text (Ctrl+A) then Ctrl+C"
+            status.Text = "⚠️ Select text above (Ctrl+A) then Ctrl+C"
+            status.TextColor3 = Color3.fromRGB(255, 200, 100)
         end
     else
-        status.Text = "⚠️ Select report type first!"
+        status.Text = "⚠️ Please select a report type first!"
+        status.TextColor3 = Color3.fromRGB(255, 150, 100)
     end
 end)
 
@@ -271,14 +349,20 @@ screenGui.Parent = player.PlayerGui
 
 -- Notification
 game:GetService("StarterGui"):SetCore("SendNotification", {
-    Title = "Anonymous9x RepText",
-    Text = "Mobile-friendly GUI Loaded!",
-    Duration = 3
+    Title = "ANONYMOUS9X TEAM",
+    Text = "RepText v2.0 Loaded!",
+    Duration = 3,
+    Icon = "rbxassetid://4483345998"
 })
 
 print("========================================")
-print("Anonymous9x RepText v1.1 - MOBILE READY")
-print("Drag title bar to move GUI")
+print("ANONYMOUS9X TEAM - RepText v2.0")
+print("Features:")
+print("- Drag to move")
+print("- Minimize/Maximize")
+print("- Full report texts")
+print("- Mobile friendly")
 print("========================================")
 
-return "Anonymous9x RepText Loaded Successfully!"
+return "ANONYMOUS9X TEAM RepText Loaded!"    
+    
