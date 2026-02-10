@@ -1,5 +1,5 @@
--- Anonymous9x RepText UI v2.2 - HOTFIX VERSION
--- Ultra Compact 240x290px | Draggable | Help Guide | Fix Nil Error
+-- Anonymous9x RepText UI v2.3 - FINAL PRODUCTION VERSION
+-- Ultra Compact 240x290px | Back Button | Improved Help | Longer Texts
 
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
@@ -7,7 +7,7 @@ local RunService = game:GetService("RunService")
 local UI_CONFIG = {
     Name = "Anonymous9x RepText",
     Creator = "Anonymous9x",
-    Version = "2.2",
+    Version = "2.3",
     Theme = {
         Background = Color3.fromRGB(12, 12, 12),
         Dark = Color3.fromRGB(18, 18, 18),
@@ -24,130 +24,130 @@ local REPORT_TEXTS = {
     ["Harassment"] = {
         title = "Harassment",
         texts = {
-            "I was repeatedly targeted with harassment including toxic language and disrespectful comments during gameplay. This player's behavior violates community standards and creates a negative environment for other players. The harassment continued even after I requested them to stop.",
-            "I am a victim of ongoing harassment from another player. They used offensive language directed at me specifically, attempting to provoke confrontation and make me uncomfortable. Multiple witnesses were present during this incident.",
-            "A player engaged in a harassment campaign against me including name-calling and derogatory remarks. This constitutes clear bullying behavior that disrupts normal gameplay experience.",
-            "I was harassed by a player with insults and toxic behavior throughout multiple game sessions. When I requested them to stop, the harassment continued unabated."
+            "I was repeatedly targeted with persistent harassment including toxic language, insults, and disrespectful comments directed specifically at me during gameplay sessions. This player's behavior clearly violates Roblox community standards and creates a significantly negative environment that affects other players' enjoyment of the game. The harassment continued even after I requested them to stop, demonstrating intentional disregard for community guidelines.",
+            "I am a victim of ongoing systematic harassment from another player. They used offensive language and personal insults directed at me specifically, attempting to provoke confrontation and make me uncomfortable in the game environment. Multiple witnesses were present during these incidents and can confirm the repeated nature of this behavior.",
+            "A player engaged in a coordinated harassment campaign against me including persistent name-calling, derogatory remarks, and public humiliation attempts. This constitutes clear bullying behavior that significantly disrupts normal gameplay experience for me and observers. The targeting was clearly intentional and persistent over multiple game sessions.",
+            "I was harassed by a player with constant insults and toxic behavior throughout multiple consecutive game sessions. When I requested them to stop engaging in this behavior, the harassment continued unabated and even intensified. This is a clear and serious violation of Roblox community guidelines and creates an unsafe gaming environment."
         }
     },
     ["18+ Content"] = {
         title = "18+ Content",
         texts = {
-            "A player created inappropriate 18+ sexual content in the game environment. Sexual dialogue and explicit material are present which violates Roblox community standards for an all-ages platform.",
-            "A player engaged in sexual roleplay and posted adult content repeatedly in the public game chat. This explicitly violates platform policy regarding mature content.",
-            "I witnessed inappropriate sexual behavior including explicit language and adult roleplay from another player. Multiple players witnessed this conduct.",
-            "A player spammed 18+ content and sexual messages throughout the public chat. They attempted to engage other players in adult conversations.",
-            "A player promoted adult content with links and references to inappropriate material. This directly violates Roblox Terms of Service."
+            "A player created and distributed inappropriate 18+ sexual content within the game environment. Sexual dialogue, explicit material, and adult-themed messaging are clearly present which directly violates Roblox community standards for an all-ages platform. The content is deliberately designed to be inappropriate and has made other players visibly uncomfortable.",
+            "A player repeatedly engaged in explicit sexual roleplay and posted adult content throughout the public game chat and communication channels. This explicitly violates platform policy regarding mature content that has absolutely no place on a family-friendly game where minors are present.",
+            "I witnessed inappropriate and explicit sexual behavior including graphic language and adult roleplay scenarios from another player directed at multiple people. Multiple players witnessed this conduct and reported feeling uncomfortable and distressed. Immediate action is required as this is a serious violation of content policies.",
+            "A player repeatedly spammed 18+ content and explicit sexual messages throughout the public chat system. They actively attempted to engage other players in adult conversations and continued despite being ignored and asked to stop. This is a clear and serious policy violation affecting the entire player base.",
+            "A player actively promoted adult content with direct links and references to inappropriate material that is completely unsuitable for the platform. This directly violates Roblox Terms of Service regarding sexual content that is completely inappropriate on a youth-oriented platform."
         }
     },
     ["Advertising"] = {
         title = "Advertising",
         texts = {
-            "A player spammed advertisements repeatedly in the game chat. They posted multiple links and promotional content against platform rules.",
-            "I observed a player advertising external Discord servers, YouTube channels, and promotional links continuously in the game chat.",
-            "There was significant spam flooding in the game chat with repetitive messages, multiple links, and promotional content disrupting normal gameplay.",
-            "A player engaged in persistent spam advertising including game recommendations, Discord server invites, and external links.",
-            "I observed a player repeatedly advertise and spam the same promotional content and links multiple times."
+            "A player repeatedly spammed advertisements and promotional messages in the game chat system. They posted multiple external links and promotional content in direct violation of platform rules and continued doing so even after being asked to stop. This behavior significantly disrupted the normal game experience for everyone playing.",
+            "I observed a player continuously advertising external Discord servers, YouTube channels, streaming platforms, and other promotional links throughout the game chat. This is prohibited advertising behavior that clearly violates Roblox platform policies and creates spam.",
+            "There was significant and disruptive spam flooding in the game chat with repetitive messages, multiple external links, and promotional content that severely disrupted normal gameplay. The same player posted these identical messages numerous times, demonstrating clearly intentional spam behavior.",
+            "A player engaged in persistent and aggressive spam advertising including game recommendations, Discord server invites, external links, and various promotional content throughout their gaming session. This behavior clearly violates anti-spam policy and makes the game unenjoyable.",
+            "I observed a player repeatedly advertise and spam the same promotional content and external links multiple times within a short timeframe. This creates clear and significant disruption to the game environment and chat quality for all players trying to enjoy the game."
         }
     },
     ["Exploiting"] = {
         title = "Exploiting",
         texts = {
-            "I observed another player utilizing an exploit or hack that grants unfair gameplay advantage. I directly witnessed them flying, using speed hacks, and becoming invisible.",
-            "A player was using a game exploit or vulnerability that I could clearly observe. They were walking through walls, having infinite health, and teleporting.",
-            "I detected clear exploitation from another player. They were using external tools or scripts to gain an unfair advantage in the game.",
-            "I confirmed a player using exploits with impossible abilities that should not exist in normal gameplay.",
-            "A player was utilizing a paid exploit menu or mod tool. I observed wallhacking and speedhacking."
+            "I observed another player utilizing an exploit or hack that clearly grants them unfair gameplay advantage over legitimate players. I directly witnessed them flying through the air, using speed hacks to move unnaturally fast, and becoming invisible in a game where none of these abilities exist normally or legitimately. This breaches game integrity completely.",
+            "A player was actively using a game exploit or vulnerability that I could clearly observe and document. They were walking through solid walls, having infinite health that never decreases, and teleporting around the map instantly. This unfair advantage was confirmed by multiple other players in the game.",
+            "I detected clear and obvious exploitation from another player using unfair methods. They were using external tools or scripts to gain an unfair advantage in the game. This behavior is ruining the experience for all legitimate players and severely affects competitive fairness.",
+            "I confirmed a player using exploits with impossible abilities that absolutely should not exist in normal gameplay. They were generating infinite money and items from nothing, clearly demonstrating a serious code violation that breaks the game balance.",
+            "A player was utilizing a paid exploit menu or mod tool to gain unfair advantages. I observed wallhacking and speedhacking which was clearly affecting other players' gameplay experience negatively and creating unfair competition that ruins the game."
         }
     },
     ["Scamming"] = {
         title = "Scamming",
         texts = {
-            "I was scammed by a player in a game trade. They promised certain items in exchange but completely failed to deliver.",
-            "A player conducted a clear scam operation. They took my valuable items and currency with false promises of return.",
-            "I am a victim of a scam from another player. They promised to provide services or items but completely failed to deliver.",
-            "A player is running a scam scheme targeting multiple players. They make false promises to players in exchange for items.",
-            "I was scammed by a player who engaged in item and currency fraud. They took my items claiming they would be doubled."
+            "I was scammed by a player in a game trade interaction. They promised certain valuable items in exchange for my items but completely failed to deliver on their promise. This is fraudulent behavior that directly violates the game's trading guidelines and took advantage of my trust.",
+            "A player conducted a clear and intentional scam operation targeting me. They took my valuable items and in-game currency with false promises of return that never happened. Multiple other players have reported being scammed by the same person using the same deceptive methods.",
+            "I am a victim of a scam from another player who was deliberately fraudulent. They promised to provide specific services or items but completely failed to deliver as promised, leaving me worse off. I lost significant in-game currency due to this deliberate scam.",
+            "A player is running an ongoing scam scheme actively targeting multiple players. They make false promises to players in exchange for items and currency, taking what they want without delivering. Multiple reports from other players confirm this is an ongoing pattern of fraudulent activity.",
+            "I was scammed by a player who engaged in item and currency fraud deliberately. They took my items claiming they would be doubled or returned, but kept everything and ghosted me. This is clear scamming behavior and intentional theft of player items."
         }
     },
     ["Racism"] = {
         title = "Racism",
         texts = {
-            "A player used racist slurs and discriminatory language toward other players. They engaged in hate speech based on race and ethnicity.",
-            "I observed a player engaged in discriminatory behavior. They made racist comments and hateful language creating a hostile environment.",
-            "A player directed racism at other players. They used slurs and discriminatory statements about race and nationality.",
-            "I witnessed a player make discriminatory comments based on religion and ethnicity. They used hateful language.",
-            "A player promoted discriminatory ideology through racist remarks and hate speech. This violates platform policy."
+            "A player used racist slurs and discriminatory language toward other players in the game. They engaged in hate speech that was directed at players based on race and ethnicity. This behavior is completely unacceptable and violates community standards.",
+            "I observed a player engaged in discriminatory behavior and hate speech. They made racist comments and hateful language directed at multiple players creating a hostile environment. Multiple witnesses were present and can confirm this behavior.",
+            "A player directed racism at other players in a clearly intentional way. They used racial slurs and discriminatory statements about race and nationality. This violates anti-discrimination policy and creates an unsafe environment for targeted players.",
+            "I witnessed a player make discriminatory comments based on religion and ethnicity. They used hateful language that violates community standards for a respectful and inclusive environment.",
+            "A player actively promoted discriminatory ideology through racist remarks and hate speech. This directly violates platform policy on equality and respect for all players of any background."
         }
     },
     ["Threats"] = {
         title = "Threats",
         texts = {
-            "A player made serious threatening statements toward me. They made death threats and used intimidation tactics attempting to scare me.",
-            "I reported another player who threatened me with doxxing and real-world harm. This is serious threatening behavior.",
-            "A player engaged in intimidation directed at me. They made threatening statements about hacking my account.",
-            "I received violent threats from a player including specific harm threats. This constitutes serious threatening behavior.",
-            "A player threatened to file false reports, hack my account, and cause real-world harm. These are intimidation tactics."
+            "A player made serious threatening statements toward me in the game. They made death threats and used intimidation tactics attempting to scare me and coerce my behavior. These are direct threats that create genuine fear and concern.",
+            "I reported another player who threatened me with doxxing and real-world physical harm. This is serious threatening behavior that requires immediate action and investigation by the safety team.",
+            "A player engaged in targeted intimidation directed at me. They made threatening statements about hacking my account and falsely reporting me to coerce compliance with their demands.",
+            "I received violent threats from a player including specific threats of harm. This constitutes serious threatening behavior that is a clear policy violation and creates genuine safety concerns.",
+            "A player threatened to file false reports against me, hack my account, and cause real-world harm to me personally. These are intimidation tactics creating an unsafe environment and require investigation."
         }
     },
     ["Username"] = {
         title = "Username",
         texts = {
-            "A player has an inappropriate username containing offensive language and slurs. This violates username policy requirements.",
-            "The username I observed contains explicit adult content that is inappropriate for this platform.",
-            "A player's username contains hate speech and slurs. This directly violates Roblox naming standards.",
-            "I found a username that includes sexual and adult content that is completely inappropriate.",
-            "A player's username contains offensive language and slurs that creates a hostile environment."
+            "A player has an inappropriate username containing offensive language and slurs. This violates username policy requirements that are necessary for maintaining a respectful community environment for all players.",
+            "The username I observed contains explicit adult content that is inappropriate and unsuitable for this platform. This represents a clear breach of username policy as it contains adult references and offensive slurs.",
+            "A player's username contains hate speech and slurs. This directly violates Roblox naming standards and community conduct requirements that prohibit discriminatory and hateful usernames.",
+            "I found a username that includes sexual and adult content that is completely inappropriate for a family-friendly platform. This breaches username conduct policy significantly.",
+            "A player's username contains offensive language and slurs that creates a hostile environment. This violates community standards for username selection and appropriateness."
         }
     },
     ["Game Content"] = {
         title = "Game Content",
         texts = {
-            "This game contains inappropriate 18+ sexual content throughout. Explicit dialogue and animations are present that violate policy.",
-            "This game features adult content including repeated sexual references and mature material unsuitable for Roblox.",
-            "This game includes hate speech and offensive content. Racial slurs and discriminatory material are present.",
-            "This game contains excessive violence and gore that is inappropriate for platform standards.",
-            "This game is designed to promote adult behavior and sexual roleplay. The content explicitly violates community standards."
+            "This game contains inappropriate 18+ sexual content throughout the game. Explicit dialogue, animations, and digital assets are present that violate platform content policy for what should be an all-ages game. The sexual content is clear and intentional.",
+            "This game features adult content including repeated sexual references and mature material that is unsuitable for the Roblox platform. It violates content guidelines that protect younger players.",
+            "This game includes hate speech and offensive content throughout. Racial slurs and discriminatory material are present in game mechanics and dialogue. This is a clear policy violation.",
+            "This game contains excessive violence and gore that is inappropriate for platform standards. The graphic content violates age-appropriate content guidelines and is disturbing.",
+            "This game is designed to promote adult behavior and sexual roleplay. The content and game mechanics explicitly violate Roblox community standards for appropriate game experiences."
         }
     },
     ["Impersonation"] = {
         title = "Impersonation",
         texts = {
-            "Another player is impersonating me or another legitimate player. Their username and avatar are designed to look identical.",
-            "A player is impersonating a game developer or staff member. They make false claims of authority.",
-            "A player created an account impersonating a legitimate account to scam and deceive other players.",
-            "A player is pretending to be my friend or a content creator to deceive other players.",
-            "I observed a clear impersonation attempt where a player mimicked a verified account appearance."
+            "Another player is impersonating me or another legitimate player. Their username and avatar are designed to look identical to the real account, causing confusion and enabling fraud through deception.",
+            "A player is impersonating a game developer or staff member. They make false claims of authority which cause confusion among other players. This violates impersonation policy and enables deception.",
+            "A player created an account impersonating a legitimate account to scam and deceive other players. The fake account is designed to look nearly identical to the real account and has fooled multiple people.",
+            "A player is pretending to be my friend or a content creator to deceive other players. They are deceiving players for personal gain through this false identity. This is a clear impersonation violation.",
+            "I observed a clear impersonation attempt where a player mimicked a verified account appearance to conduct fraud. Multiple players were deceived by this false identity."
         }
     },
     ["Child Safety"] = {
         title = "Child Safety",
         texts = {
-            "A player exhibited behavior that is concerning regarding child safety. They made inappropriate comments toward younger players.",
-            "I observed a player engaged in grooming behavior toward younger players. They attempted to manipulate children.",
-            "I am reporting a child safety concern: A player made solicitations toward minors that are inappropriate.",
-            "I witnessed predatory behavior from a player who was targeting younger players.",
-            "A player attempted to contact younger players for inappropriate offline communication."
+            "A player exhibited behavior that is deeply concerning regarding child safety. They made inappropriate comments directed toward younger players in the game which raises serious safety concerns.",
+            "I observed a player engaged in grooming behavior toward younger players. They attempted to manipulate children into private conversations for inappropriate purposes. This is predatory behavior.",
+            "I am reporting a critical child safety concern: A player made solicitations toward minors that are inappropriate and concerning. This is a clear policy violation requiring immediate investigation by the safety team.",
+            "I witnessed predatory behavior from a player who was targeting younger players. They made inappropriate proposals and requests that caused visible discomfort to the minors. This requires urgent attention.",
+            "A player attempted to contact younger players for inappropriate offline communication. This is a major safety concern requiring immediate action to protect minors on the platform."
         }
     },
     ["Bot Account"] = {
         title = "Bot Account",
         texts = {
-            "I identified another account that appears to be a bot or fake account. The automated behavior and spam patterns are obvious.",
-            "An account is displaying clear bot characteristics including highly repetitive behavior and suspicious activity patterns.",
-            "I observed a suspicious account exhibiting bot-like behavior. Automated responses suggest this is a fake account.",
-            "I confirmed an account is likely a bot. It shows zero legitimate gameplay interaction.",
-            "An account displays automated advertising and spam patterns with a suspicious activity timeline."
+            "I identified another account that appears to be a bot or fake account. The automated behavior and spam patterns are obvious and suspicious. This account does not appear to be a legitimate player.",
+            "An account is displaying clear bot characteristics including highly repetitive behavior and suspicious activity patterns. The account appears to be completely automated and not controlled by a real person.",
+            "I observed a suspicious account exhibiting bot-like behavior. Automated responses and unnatural gameplay patterns strongly suggest this is a fake account.",
+            "I confirmed an account is likely a bot. It shows zero legitimate gameplay interaction and only engages in repetitive spam and advertising behavior.",
+            "An account has been confirmed as a bot account. It displays automated advertising and spam patterns with a suspicious activity timeline. This is not a genuine player account."
         }
     },
     ["Toxicity"] = {
         title = "Toxicity",
         texts = {
-            "I observed a player exhibiting toxic and rude behavior toward multiple other players. They used aggressive language.",
-            "A player displayed extremely toxic behavior in the game chat. They made rude comments and created a negative atmosphere.",
-            "I witnessed toxicity from a player who made rude remarks to other players constantly.",
-            "A player displayed rudeness and a generally toxic attitude. They gave aggressive responses.",
-            "A player exhibited toxic behavior including rude language and disrespectful treatment of other players."
+            "I observed a player exhibiting toxic and rude behavior toward multiple other players. They used aggressive language and made disrespectful comments throughout their entire gameplay session.",
+            "A player displayed extremely toxic behavior in the game chat. They made rude comments, complained excessively, and created a negative atmosphere affecting everyone.",
+            "I witnessed toxicity from a player who made rude remarks to other players, complained constantly, and created a very negative game atmosphere.",
+            "A player displayed rudeness and a generally toxic attitude. They gave aggressive responses and treated other players with disrespect.",
+            "A player exhibited toxic behavior including rude language and disrespectful treatment of other players. This creates a negative community experience for all."
         }
     }
 }
@@ -171,20 +171,20 @@ local function createRepTextUI()
     mainCorner.CornerRadius = UDim.new(0, 6)
     mainCorner.Parent = mainFrame
     
-    -- Title Bar
+    -- Title Bar (ALWAYS VISIBLE)
     local titleBar = Instance.new("Frame")
     titleBar.Name = "TitleBar"
     titleBar.Size = UDim2.new(1, 0, 0, 32)
     titleBar.BackgroundColor3 = UI_CONFIG.Theme.Dark
     titleBar.BorderColor3 = UI_CONFIG.Theme.Border
     titleBar.BorderSizePixel = 1
+    titleBar.ZIndex = 100
     titleBar.Parent = mainFrame
     
     local titleCorner = Instance.new("UICorner")
     titleCorner.CornerRadius = UDim.new(0, 6)
     titleCorner.Parent = titleBar
     
-    -- Title Text (Draggable)
     local titleText = Instance.new("TextLabel")
     titleText.Name = "TitleText"
     titleText.Size = UDim2.new(1, -78, 1, 0)
@@ -220,6 +220,7 @@ local function createRepTextUI()
     helpBtn.TextSize = 11
     helpBtn.Font = Enum.Font.GothamBold
     helpBtn.Text = "?"
+    helpBtn.ZIndex = 101
     helpBtn.Parent = buttonContainer
     
     local helpCorner = Instance.new("UICorner")
@@ -238,6 +239,7 @@ local function createRepTextUI()
     minimizeBtn.TextSize = 13
     minimizeBtn.Font = Enum.Font.GothamBold
     minimizeBtn.Text = "−"
+    minimizeBtn.ZIndex = 101
     minimizeBtn.Parent = buttonContainer
     
     local minCorner = Instance.new("UICorner")
@@ -256,6 +258,7 @@ local function createRepTextUI()
     closeBtn.TextSize = 13
     closeBtn.Font = Enum.Font.GothamBold
     closeBtn.Text = "×"
+    closeBtn.ZIndex = 101
     closeBtn.Parent = buttonContainer
     
     local closeCorner = Instance.new("UICorner")
@@ -317,6 +320,62 @@ local function createRepTextUI()
     textPadding.PaddingBottom = UDim.new(0, 5)
     textPadding.Parent = textScroll
     
+    -- Help Panel (with Back button)
+    local helpPanel = Instance.new("Frame")
+    helpPanel.Name = "HelpPanel"
+    helpPanel.Size = UDim2.new(1, 0, 1, -32)
+    helpPanel.Position = UDim2.new(0, 0, 0, 32)
+    helpPanel.BackgroundColor3 = UI_CONFIG.Theme.Background
+    helpPanel.Visible = false
+    helpPanel.Parent = mainFrame
+    
+    -- Back Button in Help Panel
+    local backBtn = Instance.new("TextButton")
+    backBtn.Name = "BackBtn"
+    backBtn.Size = UDim2.new(1, -10, 0, 24)
+    backBtn.Position = UDim2.new(0, 5, 0, 5)
+    backBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
+    backBtn.BorderColor3 = UI_CONFIG.Theme.Border
+    backBtn.BorderSizePixel = 1
+    backBtn.TextColor3 = UI_CONFIG.Theme.Text
+    backBtn.TextSize = 9
+    backBtn.Font = Enum.Font.GothamBold
+    backBtn.Text = "← Back"
+    backBtn.Parent = helpPanel
+    
+    local backCorner = Instance.new("UICorner")
+    backCorner.CornerRadius = UDim.new(0, 3)
+    backCorner.Parent = backBtn
+    
+    -- Help Scroll
+    local helpScroll = Instance.new("ScrollingFrame")
+    helpScroll.Name = "HelpScroll"
+    helpScroll.Size = UDim2.new(1, 0, 1, -34)
+    helpScroll.Position = UDim2.new(0, 0, 0, 30)
+    helpScroll.BackgroundTransparency = 1
+    helpScroll.ScrollBarThickness = 2
+    helpScroll.CanvasSize = UDim2.new(0, 0, 5, 0)
+    helpScroll.Parent = helpPanel
+    
+    local helpText = Instance.new("TextLabel")
+    helpText.Name = "HelpText"
+    helpText.Size = UDim2.new(1, -10, 0, 200)
+    helpText.BackgroundTransparency = 1
+    helpText.TextColor3 = UI_CONFIG.Theme.TextSecondary
+    helpText.TextSize = 7.5
+    helpText.Font = Enum.Font.Gotham
+    helpText.Text = "📋 HOW TO USE:\n\n1️⃣ SCROLL CATEGORIES\nSwipe left/right to find category\n\n2️⃣ CLICK CATEGORY\nClick to load report texts\n\n3️⃣ READ PREVIEW\nRead text in card\n\n4️⃣ COPY TEXT\nClick COPY button\n\n5️⃣ OPEN REPORT FORM\nGo to Roblox report\n\n6️⃣ PASTE\nCtrl+V or Cmd+V\n\n7️⃣ SUBMIT\nSubmit your report\n\n🎮 DRAG UI:\nClick & drag title bar anywhere\n\n➖ MINIMIZE:\nClick − button (header stays visible)\n\n❌ CLOSE:\nClick × button\n\n❓ HELP:\nClick ? button (you are here)"
+    helpText.TextWrapped = true
+    helpText.TextXAlignment = Enum.TextXAlignment.Left
+    helpText.TextYAlignment = Enum.TextYAlignment.Top
+    helpText.Parent = helpScroll
+    
+    local helpPadding = Instance.new("UIPadding")
+    helpPadding.PaddingLeft = UDim.new(0, 5)
+    helpPadding.PaddingRight = UDim.new(0, 5)
+    helpPadding.PaddingTop = UDim.new(0, 5)
+    helpPadding.Parent = helpText
+    
     -- Loading Screen
     local loadingScreen = Instance.new("Frame")
     loadingScreen.Name = "LoadingScreen"
@@ -324,6 +383,7 @@ local function createRepTextUI()
     loadingScreen.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     loadingScreen.BackgroundTransparency = 0.5
     loadingScreen.Visible = false
+    loadingScreen.ZIndex = 50
     loadingScreen.Parent = mainFrame
     
     local loadingBox = Instance.new("Frame")
@@ -332,6 +392,7 @@ local function createRepTextUI()
     loadingBox.BackgroundColor3 = UI_CONFIG.Theme.Dark
     loadingBox.BorderColor3 = UI_CONFIG.Theme.Border
     loadingBox.BorderSizePixel = 2
+    loadingBox.ZIndex = 51
     loadingBox.Parent = loadingScreen
     
     local loadCorner = Instance.new("UICorner")
@@ -370,43 +431,10 @@ local function createRepTextUI()
     loadText.Text = "Loading..."
     loadText.Parent = loadingBox
     
-    -- Help Panel
-    local helpPanel = Instance.new("Frame")
-    helpPanel.Name = "HelpPanel"
-    helpPanel.Size = UDim2.new(1, 0, 1, 0)
-    helpPanel.BackgroundColor3 = UI_CONFIG.Theme.Background
-    helpPanel.Visible = false
-    helpPanel.Parent = mainFrame
-    
-    local helpScroll = Instance.new("ScrollingFrame")
-    helpScroll.Size = UDim2.new(1, 0, 1, -32)
-    helpScroll.Position = UDim2.new(0, 0, 0, 32)
-    helpScroll.BackgroundTransparency = 1
-    helpScroll.ScrollBarThickness = 2
-    helpScroll.CanvasSize = UDim2.new(0, 0, 3, 0)
-    helpScroll.Parent = helpPanel
-    
-    local helpText = Instance.new("TextLabel")
-    helpText.Size = UDim2.new(1, -10, 0, 150)
-    helpText.BackgroundTransparency = 1
-    helpText.TextColor3 = UI_CONFIG.Theme.TextSecondary
-    helpText.TextSize = 7
-    helpText.Font = Enum.Font.Gotham
-    helpText.Text = "HOW TO USE:\n\n1. Scroll ↔ find category\n\n2. Click category\n\n3. Read text preview\n\n4. Click COPY\n\n5. Open Roblox report\n\n6. Paste (Ctrl+V)\n\n7. Submit\n\nDRAG: Click title\n\nMINIMIZE: −\n\nCLOSE: ×"
-    helpText.TextWrapped = true
-    helpText.TextXAlignment = Enum.TextXAlignment.Left
-    helpText.TextYAlignment = Enum.TextYAlignment.Top
-    helpText.Parent = helpScroll
-    
-    local helpPadding = Instance.new("UIPadding")
-    helpPadding.PaddingLeft = UDim.new(0, 5)
-    helpPadding.PaddingRight = UDim.new(0, 5)
-    helpPadding.PaddingTop = UDim.new(0, 5)
-    helpPadding.Parent = helpText
-    
     -- Variables
     local isMinimized = false
     local helpShowing = false
+    local selectedCategory = nil
     
     -- Create Category Button
     local function createCategoryButton(categoryName)
@@ -433,8 +461,10 @@ local function createRepTextUI()
         end)
         
         btn.MouseLeave:Connect(function()
-            btn.BackgroundColor3 = UI_CONFIG.Theme.Dark
-            btn.TextColor3 = UI_CONFIG.Theme.TextSecondary
+            if selectedCategory ~= categoryName then
+                btn.BackgroundColor3 = UI_CONFIG.Theme.Dark
+                btn.TextColor3 = UI_CONFIG.Theme.TextSecondary
+            end
         end)
         
         btn.MouseButton1Click:Connect(function()
@@ -442,6 +472,12 @@ local function createRepTextUI()
             helpPanel.Visible = false
             helpShowing = false
             
+            if selectedCategory and categoryScroll:FindFirstChild(selectedCategory) then
+                categoryScroll:FindFirstChild(selectedCategory).BackgroundColor3 = UI_CONFIG.Theme.Dark
+                categoryScroll:FindFirstChild(selectedCategory).TextColor3 = UI_CONFIG.Theme.TextSecondary
+            end
+            
+            selectedCategory = categoryName
             btn.BackgroundColor3 = UI_CONFIG.Theme.Accent
             btn.TextColor3 = UI_CONFIG.Theme.Text
             
@@ -455,7 +491,7 @@ local function createRepTextUI()
             
             for i, text in ipairs(REPORT_TEXTS[categoryName].texts) do
                 local textCard = Instance.new("Frame")
-                textCard.Size = UDim2.new(1, -10, 0, 65)
+                textCard.Size = UDim2.new(1, -10, 0, 70)
                 textCard.BackgroundColor3 = UI_CONFIG.Theme.Card
                 textCard.BorderColor3 = UI_CONFIG.Theme.Border
                 textCard.BorderSizePixel = 1
@@ -533,13 +569,30 @@ local function createRepTextUI()
     -- Button Event Handlers
     helpBtn.MouseButton1Click:Connect(function()
         helpShowing = not helpShowing
-        helpPanel.Visible = helpShowing
-        contentFrame.Visible = not helpShowing
         if helpShowing then
+            helpPanel.Visible = true
+            contentFrame.Visible = false
             helpBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         else
+            helpPanel.Visible = false
+            contentFrame.Visible = true
             helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
         end
+    end)
+    
+    backBtn.MouseButton1Click:Connect(function()
+        helpShowing = false
+        helpPanel.Visible = false
+        contentFrame.Visible = true
+        helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
+    end)
+    
+    backBtn.MouseEnter:Connect(function()
+        backBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
+    end)
+    
+    backBtn.MouseLeave:Connect(function()
+        backBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
     end)
     
     minimizeBtn.MouseButton1Click:Connect(function()
@@ -563,7 +616,7 @@ local function createRepTextUI()
         end)
     end)
     
-    -- Drag Support (Safe)
+    -- Drag Support
     local isDragging = false
     local dragOffset = Vector2.new(0, 0)
     
@@ -635,7 +688,7 @@ local function safeInit()
     if not success then
         warn("RepText Error: " .. tostring(err))
     else
-        print("✓ Anonymous9x RepText v2.2 - Loaded Successfully!")
+        print("✓ Anonymous9x RepText v2.3 - FINAL VERSION LOADED!")
     end
 end
 
