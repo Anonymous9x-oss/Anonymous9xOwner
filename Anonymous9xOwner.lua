@@ -157,7 +157,7 @@ local function createRepTextUI()
     screenGui.Name = "RepTextUI"
     screenGui.ResetOnSpawn = false
     screenGui.DisplayOrder = 999
-    
+
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
     mainFrame.Size = UDim2.new(0, 240, 0, 290)
@@ -166,11 +166,11 @@ local function createRepTextUI()
     mainFrame.BorderColor3 = UI_CONFIG.Theme.Border
     mainFrame.BorderSizePixel = 2
     mainFrame.Parent = screenGui
-    
+
     local mainCorner = Instance.new("UICorner")
     mainCorner.CornerRadius = UDim.new(0, 6)
     mainCorner.Parent = mainFrame
-    
+
     -- Title Bar (ALWAYS VISIBLE)
     local titleBar = Instance.new("Frame")
     titleBar.Name = "TitleBar"
@@ -180,26 +180,26 @@ local function createRepTextUI()
     titleBar.BorderSizePixel = 1
     titleBar.ZIndex = 100
     titleBar.Parent = mainFrame
-    
+
     local titleCorner = Instance.new("UICorner")
     titleCorner.CornerRadius = UDim.new(0, 6)
     titleCorner.Parent = titleBar
-    
+
     local titleText = Instance.new("TextLabel")
     titleText.Name = "TitleText"
-    titleText.Size = UDim2.new(1, -78, 1, 0)
+    titleText.Size = UDim2.new(1, -70, 1, 0)  -- Diperbaiki dari -78 menjadi -70
     titleText.BackgroundTransparency = 1
     titleText.TextColor3 = UI_CONFIG.Theme.Text
-    titleText.TextSize = 10
+    titleText.TextSize = 11  -- Dinaikkan dari 10
     titleText.Font = Enum.Font.GothamBold
     titleText.Text = "Anonymous9x"
     titleText.TextXAlignment = Enum.TextXAlignment.Left
     titleText.Parent = titleBar
-    
+
     local titlePadding = Instance.new("UIPadding")
     titlePadding.PaddingLeft = UDim.new(0, 6)
     titlePadding.Parent = titleText
-    
+
     -- Button Container
     local buttonContainer = Instance.new("Frame")
     buttonContainer.Name = "ButtonContainer"
@@ -207,7 +207,7 @@ local function createRepTextUI()
     buttonContainer.Position = UDim2.new(1, -72, 0, 0)
     buttonContainer.BackgroundTransparency = 1
     buttonContainer.Parent = titleBar
-    
+
     -- Help Button
     local helpBtn = Instance.new("TextButton")
     helpBtn.Name = "HelpBtn"
@@ -222,11 +222,11 @@ local function createRepTextUI()
     helpBtn.Text = "?"
     helpBtn.ZIndex = 101
     helpBtn.Parent = buttonContainer
-    
+
     local helpCorner = Instance.new("UICorner")
     helpCorner.CornerRadius = UDim.new(0, 3)
     helpCorner.Parent = helpBtn
-    
+
     -- Minimize Button
     local minimizeBtn = Instance.new("TextButton")
     minimizeBtn.Name = "MinimizeBtn"
@@ -241,11 +241,11 @@ local function createRepTextUI()
     minimizeBtn.Text = "−"
     minimizeBtn.ZIndex = 101
     minimizeBtn.Parent = buttonContainer
-    
+
     local minCorner = Instance.new("UICorner")
     minCorner.CornerRadius = UDim.new(0, 3)
     minCorner.Parent = minimizeBtn
-    
+
     -- Close Button
     local closeBtn = Instance.new("TextButton")
     closeBtn.Name = "CloseBtn"
@@ -260,11 +260,11 @@ local function createRepTextUI()
     closeBtn.Text = "×"
     closeBtn.ZIndex = 101
     closeBtn.Parent = buttonContainer
-    
+
     local closeCorner = Instance.new("UICorner")
     closeCorner.CornerRadius = UDim.new(0, 3)
     closeCorner.Parent = closeBtn
-    
+
     -- Content Frame
     local contentFrame = Instance.new("Frame")
     contentFrame.Name = "ContentFrame"
@@ -272,7 +272,7 @@ local function createRepTextUI()
     contentFrame.Position = UDim2.new(0, 0, 0, 32)
     contentFrame.BackgroundTransparency = 1
     contentFrame.Parent = mainFrame
-    
+
     -- Category Scroll
     local categoryScroll = Instance.new("ScrollingFrame")
     categoryScroll.Name = "CategoryScroll"
@@ -283,19 +283,21 @@ local function createRepTextUI()
     categoryScroll.ScrollBarThickness = 2
     categoryScroll.CanvasSize = UDim2.new(4, 0, 0, 38)
     categoryScroll.Parent = contentFrame
-    
-    pcall(function() categoryScroll.ScrollDirection = Enum.ScrollDirection.X end)
-    
+
+    pcall(function()
+        categoryScroll.ScrollDirection = Enum.ScrollDirection.X
+    end)
+
     local catLayout = Instance.new("UIListLayout")
     catLayout.FillDirection = Enum.FillDirection.Horizontal
     catLayout.Padding = UDim.new(0, 4)
     catLayout.Parent = categoryScroll
-    
+
     local catPadding = Instance.new("UIPadding")
     catPadding.PaddingLeft = UDim.new(0, 4)
     catPadding.PaddingRight = UDim.new(0, 4)
     catPadding.Parent = categoryScroll
-    
+
     -- Text Scroll
     local textScroll = Instance.new("ScrollingFrame")
     textScroll.Name = "TextScroll"
@@ -307,19 +309,19 @@ local function createRepTextUI()
     textScroll.ScrollBarThickness = 2
     textScroll.CanvasSize = UDim2.new(0, 0, 10, 0)
     textScroll.Parent = contentFrame
-    
+
     local textLayout = Instance.new("UIListLayout")
     textLayout.FillDirection = Enum.FillDirection.Vertical
     textLayout.Padding = UDim.new(0, 4)
     textLayout.Parent = textScroll
-    
+
     local textPadding = Instance.new("UIPadding")
     textPadding.PaddingLeft = UDim.new(0, 5)
     textPadding.PaddingRight = UDim.new(0, 5)
     textPadding.PaddingTop = UDim.new(0, 5)
     textPadding.PaddingBottom = UDim.new(0, 5)
     textPadding.Parent = textScroll
-    
+
     -- Help Panel (with Back button)
     local helpPanel = Instance.new("Frame")
     helpPanel.Name = "HelpPanel"
@@ -328,7 +330,7 @@ local function createRepTextUI()
     helpPanel.BackgroundColor3 = UI_CONFIG.Theme.Background
     helpPanel.Visible = false
     helpPanel.Parent = mainFrame
-    
+
     -- Back Button in Help Panel
     local backBtn = Instance.new("TextButton")
     backBtn.Name = "BackBtn"
@@ -342,11 +344,11 @@ local function createRepTextUI()
     backBtn.Font = Enum.Font.GothamBold
     backBtn.Text = "← Back"
     backBtn.Parent = helpPanel
-    
+
     local backCorner = Instance.new("UICorner")
     backCorner.CornerRadius = UDim.new(0, 3)
     backCorner.Parent = backBtn
-    
+
     -- Help Scroll
     local helpScroll = Instance.new("ScrollingFrame")
     helpScroll.Name = "HelpScroll"
@@ -356,7 +358,7 @@ local function createRepTextUI()
     helpScroll.ScrollBarThickness = 2
     helpScroll.CanvasSize = UDim2.new(0, 0, 5, 0)
     helpScroll.Parent = helpPanel
-    
+
     local helpText = Instance.new("TextLabel")
     helpText.Name = "HelpText"
     helpText.Size = UDim2.new(1, -10, 0, 200)
@@ -369,13 +371,13 @@ local function createRepTextUI()
     helpText.TextXAlignment = Enum.TextXAlignment.Left
     helpText.TextYAlignment = Enum.TextYAlignment.Top
     helpText.Parent = helpScroll
-    
+
     local helpPadding = Instance.new("UIPadding")
     helpPadding.PaddingLeft = UDim.new(0, 5)
     helpPadding.PaddingRight = UDim.new(0, 5)
     helpPadding.PaddingTop = UDim.new(0, 5)
     helpPadding.Parent = helpText
-    
+
     -- Loading Screen
     local loadingScreen = Instance.new("Frame")
     loadingScreen.Name = "LoadingScreen"
@@ -385,7 +387,7 @@ local function createRepTextUI()
     loadingScreen.Visible = false
     loadingScreen.ZIndex = 50
     loadingScreen.Parent = mainFrame
-    
+
     local loadingBox = Instance.new("Frame")
     loadingBox.Size = UDim2.new(0, 90, 0, 60)
     loadingBox.Position = UDim2.new(0.5, -45, 0.5, -30)
@@ -394,16 +396,16 @@ local function createRepTextUI()
     loadingBox.BorderSizePixel = 2
     loadingBox.ZIndex = 51
     loadingBox.Parent = loadingScreen
-    
+
     local loadCorner = Instance.new("UICorner")
     loadCorner.CornerRadius = UDim.new(0, 4)
     loadCorner.Parent = loadingBox
-    
+
     local dotsContainer = Instance.new("Frame")
     dotsContainer.Size = UDim2.new(1, 0, 0.5, 0)
     dotsContainer.BackgroundTransparency = 1
     dotsContainer.Parent = loadingBox
-    
+
     local dots = {}
     for i = 1, 3 do
         local dot = Instance.new("TextLabel")
@@ -413,14 +415,13 @@ local function createRepTextUI()
         dot.BorderSizePixel = 0
         dot.Text = ""
         dot.Parent = dotsContainer
-        
+
         local dotCorner = Instance.new("UICorner")
         dotCorner.CornerRadius = UDim.new(1, 0)
         dotCorner.Parent = dot
-        
         dots[i] = dot
     end
-    
+
     local loadText = Instance.new("TextLabel")
     loadText.Size = UDim2.new(1, 0, 0.5, 0)
     loadText.Position = UDim2.new(0, 0, 0.5, 0)
@@ -430,12 +431,12 @@ local function createRepTextUI()
     loadText.Font = Enum.Font.GothamBold
     loadText.Text = "Loading..."
     loadText.Parent = loadingBox
-    
+
     -- Variables
     local isMinimized = false
     local helpShowing = false
     local selectedCategory = nil
-    
+
     -- Create Category Button
     local function createCategoryButton(categoryName)
         local btn = Instance.new("TextButton")
@@ -450,45 +451,45 @@ local function createRepTextUI()
         btn.Text = REPORT_TEXTS[categoryName].title
         btn.TextWrapped = true
         btn.Parent = categoryScroll
-        
+
         local btnCorner = Instance.new("UICorner")
         btnCorner.CornerRadius = UDim.new(0, 3)
         btnCorner.Parent = btn
-        
+
         btn.MouseEnter:Connect(function()
             btn.BackgroundColor3 = UI_CONFIG.Theme.Hover
             btn.TextColor3 = UI_CONFIG.Theme.Text
         end)
-        
+
         btn.MouseLeave:Connect(function()
             if selectedCategory ~= categoryName then
                 btn.BackgroundColor3 = UI_CONFIG.Theme.Dark
                 btn.TextColor3 = UI_CONFIG.Theme.TextSecondary
             end
         end)
-        
+
         btn.MouseButton1Click:Connect(function()
             loadingScreen.Visible = true
             helpPanel.Visible = false
             helpShowing = false
-            
+
             if selectedCategory and categoryScroll:FindFirstChild(selectedCategory) then
                 categoryScroll:FindFirstChild(selectedCategory).BackgroundColor3 = UI_CONFIG.Theme.Dark
                 categoryScroll:FindFirstChild(selectedCategory).TextColor3 = UI_CONFIG.Theme.TextSecondary
             end
-            
+
             selectedCategory = categoryName
             btn.BackgroundColor3 = UI_CONFIG.Theme.Accent
             btn.TextColor3 = UI_CONFIG.Theme.Text
-            
+
             for _, child in ipairs(textScroll:GetChildren()) do
                 if child:IsA("Frame") then
                     child:Destroy()
                 end
             end
-            
+
             wait(0.2)
-            
+
             for i, text in ipairs(REPORT_TEXTS[categoryName].texts) do
                 local textCard = Instance.new("Frame")
                 textCard.Size = UDim2.new(1, -10, 0, 70)
@@ -496,11 +497,11 @@ local function createRepTextUI()
                 textCard.BorderColor3 = UI_CONFIG.Theme.Border
                 textCard.BorderSizePixel = 1
                 textCard.Parent = textScroll
-                
+
                 local cardCorner = Instance.new("UICorner")
                 cardCorner.CornerRadius = UDim.new(0, 4)
                 cardCorner.Parent = textCard
-                
+
                 local textLabel = Instance.new("TextLabel")
                 textLabel.Size = UDim2.new(1, -6, 1, -26)
                 textLabel.BackgroundTransparency = 1
@@ -512,13 +513,13 @@ local function createRepTextUI()
                 textLabel.TextXAlignment = Enum.TextXAlignment.Left
                 textLabel.TextYAlignment = Enum.TextYAlignment.Top
                 textLabel.Parent = textCard
-                
+
                 local labelPadding = Instance.new("UIPadding")
                 labelPadding.PaddingLeft = UDim.new(0, 3)
                 labelPadding.PaddingRight = UDim.new(0, 3)
                 labelPadding.PaddingTop = UDim.new(0, 3)
                 labelPadding.Parent = textLabel
-                
+
                 local copyBtn = Instance.new("TextButton")
                 copyBtn.Size = UDim2.new(1, -6, 0, 18)
                 copyBtn.Position = UDim2.new(0, 3, 1, -21)
@@ -530,19 +531,19 @@ local function createRepTextUI()
                 copyBtn.Font = Enum.Font.GothamBold
                 copyBtn.Text = "COPY"
                 copyBtn.Parent = textCard
-                
+
                 local btnCorner2 = Instance.new("UICorner")
                 btnCorner2.CornerRadius = UDim.new(0, 2)
                 btnCorner2.Parent = copyBtn
-                
+
                 copyBtn.MouseEnter:Connect(function()
                     copyBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
                 end)
-                
+
                 copyBtn.MouseLeave:Connect(function()
                     copyBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
                 end)
-                
+
                 copyBtn.MouseButton1Click:Connect(function()
                     pcall(function()
                         setclipboard(text)
@@ -551,21 +552,21 @@ local function createRepTextUI()
                         copyBtn.Text = "COPY"
                     end)
                 end)
-                
+
                 textCard.LayoutOrder = i
             end
-            
+
             textScroll.CanvasSize = UDim2.new(0, 0, 0, textLayout.AbsoluteContentSize.Y + 10)
             loadingScreen.Visible = false
         end)
-        
+
         return btn
     end
-    
+
     for categoryName, _ in pairs(REPORT_TEXTS) do
         createCategoryButton(categoryName)
     end
-    
+
     -- Button Event Handlers
     helpBtn.MouseButton1Click:Connect(function()
         helpShowing = not helpShowing
@@ -579,22 +580,22 @@ local function createRepTextUI()
             helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
         end
     end)
-    
+
     backBtn.MouseButton1Click:Connect(function()
         helpShowing = false
         helpPanel.Visible = false
         contentFrame.Visible = true
         helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
     end)
-    
+
     backBtn.MouseEnter:Connect(function()
         backBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
     end)
-    
+
     backBtn.MouseLeave:Connect(function()
         backBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
     end)
-    
+
     minimizeBtn.MouseButton1Click:Connect(function()
         if not isMinimized then
             isMinimized = true
@@ -609,30 +610,30 @@ local function createRepTextUI()
             minimizeBtn.Text = "−"
         end
     end)
-    
+
     closeBtn.MouseButton1Click:Connect(function()
         pcall(function()
             screenGui:Destroy()
         end)
     end)
-    
+
     -- Drag Support
     local isDragging = false
     local dragOffset = Vector2.new(0, 0)
-    
+
     titleText.InputBegan:Connect(function(input, gameProcessed)
         if not gameProcessed and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
             isDragging = true
             dragOffset = Vector2.new(mainFrame.Position.X.Offset - input.Position.X, mainFrame.Position.Y.Offset - input.Position.Y)
         end
     end)
-    
+
     titleText.InputEnded:Connect(function(input, gameProcessed)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             isDragging = false
         end
     end)
-    
+
     titleText.InputChanged:Connect(function(input, gameProcessed)
         if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
             local newX = input.Position.X + dragOffset.X
@@ -640,7 +641,7 @@ local function createRepTextUI()
             mainFrame.Position = UDim2.new(0, newX, 0, newY)
         end
     end)
-    
+
     -- Loading Animation
     RunService.RenderStepped:Connect(function()
         if loadingScreen.Visible then
@@ -648,7 +649,6 @@ local function createRepTextUI()
             for i, dot in ipairs(dots) do
                 local delay = (i - 1) * 0.1
                 local phase = (elapsed - delay) % 0.6
-                
                 if phase < 0.3 then
                     local t = phase / 0.3
                     dot.BackgroundTransparency = 0.5 - (0.3 * t)
@@ -659,7 +659,7 @@ local function createRepTextUI()
             end
         end
     end)
-    
+
     -- Mobile Swipe
     local startX = 0
     contentFrame.InputBegan:Connect(function(input, gameProcessed)
@@ -668,7 +668,7 @@ local function createRepTextUI()
             startX = input.Position.X
         end
     end)
-    
+
     contentFrame.InputChanged:Connect(function(input, gameProcessed)
         if input.UserInputType == Enum.UserInputType.Touch then
             local deltaX = startX - input.Position.X
@@ -678,7 +678,7 @@ local function createRepTextUI()
             end
         end
     end)
-    
+
     screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
     return screenGui
 end
