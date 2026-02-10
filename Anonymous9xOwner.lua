@@ -157,6 +157,7 @@ local function createRepTextUI()
     screenGui.Name = "RepTextUI"
     screenGui.ResetOnSpawn = false
     screenGui.DisplayOrder = 999
+    screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling -- Penting!
 
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
@@ -165,6 +166,7 @@ local function createRepTextUI()
     mainFrame.BackgroundColor3 = UI_CONFIG.Theme.Background
     mainFrame.BorderColor3 = UI_CONFIG.Theme.Border
     mainFrame.BorderSizePixel = 2
+    mainFrame.ZIndex = 9999 -- ZIndex sangat tinggi
     mainFrame.Parent = screenGui
 
     local mainCorner = Instance.new("UICorner")
@@ -178,7 +180,7 @@ local function createRepTextUI()
     titleBar.BackgroundColor3 = UI_CONFIG.Theme.Dark
     titleBar.BorderColor3 = UI_CONFIG.Theme.Border
     titleBar.BorderSizePixel = 1
-    titleBar.ZIndex = 100
+    titleBar.ZIndex = 10000 -- Lebih tinggi dari mainFrame
     titleBar.Parent = mainFrame
 
     local titleCorner = Instance.new("UICorner")
@@ -187,13 +189,14 @@ local function createRepTextUI()
 
     local titleText = Instance.new("TextLabel")
     titleText.Name = "TitleText"
-    titleText.Size = UDim2.new(1, -70, 1, 0)  -- Diperbaiki dari -78 menjadi -70
+    titleText.Size = UDim2.new(1, -70, 1, 0)
     titleText.BackgroundTransparency = 1
     titleText.TextColor3 = UI_CONFIG.Theme.Text
-    titleText.TextSize = 11  -- Dinaikkan dari 10
+    titleText.TextSize = 11
     titleText.Font = Enum.Font.GothamBold
     titleText.Text = "Anonymous9x"
     titleText.TextXAlignment = Enum.TextXAlignment.Left
+    titleText.ZIndex = 10001 -- Lebih tinggi dari titleBar
     titleText.Parent = titleBar
 
     local titlePadding = Instance.new("UIPadding")
@@ -206,6 +209,7 @@ local function createRepTextUI()
     buttonContainer.Size = UDim2.new(0, 72, 1, 0)
     buttonContainer.Position = UDim2.new(1, -72, 0, 0)
     buttonContainer.BackgroundTransparency = 1
+    buttonContainer.ZIndex = 10001
     buttonContainer.Parent = titleBar
 
     -- Help Button
@@ -220,7 +224,7 @@ local function createRepTextUI()
     helpBtn.TextSize = 11
     helpBtn.Font = Enum.Font.GothamBold
     helpBtn.Text = "?"
-    helpBtn.ZIndex = 101
+    helpBtn.ZIndex = 10002 -- Lebih tinggi dari buttonContainer
     helpBtn.Parent = buttonContainer
 
     local helpCorner = Instance.new("UICorner")
@@ -239,7 +243,7 @@ local function createRepTextUI()
     minimizeBtn.TextSize = 13
     minimizeBtn.Font = Enum.Font.GothamBold
     minimizeBtn.Text = "−"
-    minimizeBtn.ZIndex = 101
+    minimizeBtn.ZIndex = 10002
     minimizeBtn.Parent = buttonContainer
 
     local minCorner = Instance.new("UICorner")
@@ -258,7 +262,7 @@ local function createRepTextUI()
     closeBtn.TextSize = 13
     closeBtn.Font = Enum.Font.GothamBold
     closeBtn.Text = "×"
-    closeBtn.ZIndex = 101
+    closeBtn.ZIndex = 10002
     closeBtn.Parent = buttonContainer
 
     local closeCorner = Instance.new("UICorner")
@@ -271,6 +275,7 @@ local function createRepTextUI()
     contentFrame.Size = UDim2.new(1, 0, 1, -32)
     contentFrame.Position = UDim2.new(0, 0, 0, 32)
     contentFrame.BackgroundTransparency = 1
+    contentFrame.ZIndex = 9999
     contentFrame.Parent = mainFrame
 
     -- Category Scroll
@@ -282,6 +287,7 @@ local function createRepTextUI()
     categoryScroll.BorderSizePixel = 1
     categoryScroll.ScrollBarThickness = 2
     categoryScroll.CanvasSize = UDim2.new(4, 0, 0, 38)
+    categoryScroll.ZIndex = 9999
     categoryScroll.Parent = contentFrame
 
     pcall(function()
@@ -308,6 +314,7 @@ local function createRepTextUI()
     textScroll.BorderSizePixel = 1
     textScroll.ScrollBarThickness = 2
     textScroll.CanvasSize = UDim2.new(0, 0, 10, 0)
+    textScroll.ZIndex = 9999
     textScroll.Parent = contentFrame
 
     local textLayout = Instance.new("UIListLayout")
@@ -329,6 +336,7 @@ local function createRepTextUI()
     helpPanel.Position = UDim2.new(0, 0, 0, 32)
     helpPanel.BackgroundColor3 = UI_CONFIG.Theme.Background
     helpPanel.Visible = false
+    helpPanel.ZIndex = 10000
     helpPanel.Parent = mainFrame
 
     -- Back Button in Help Panel
@@ -343,6 +351,7 @@ local function createRepTextUI()
     backBtn.TextSize = 9
     backBtn.Font = Enum.Font.GothamBold
     backBtn.Text = "← Back"
+    backBtn.ZIndex = 10001
     backBtn.Parent = helpPanel
 
     local backCorner = Instance.new("UICorner")
@@ -357,6 +366,7 @@ local function createRepTextUI()
     helpScroll.BackgroundTransparency = 1
     helpScroll.ScrollBarThickness = 2
     helpScroll.CanvasSize = UDim2.new(0, 0, 5, 0)
+    helpScroll.ZIndex = 10000
     helpScroll.Parent = helpPanel
 
     local helpText = Instance.new("TextLabel")
@@ -370,6 +380,7 @@ local function createRepTextUI()
     helpText.TextWrapped = true
     helpText.TextXAlignment = Enum.TextXAlignment.Left
     helpText.TextYAlignment = Enum.TextYAlignment.Top
+    helpText.ZIndex = 10001
     helpText.Parent = helpScroll
 
     local helpPadding = Instance.new("UIPadding")
@@ -385,7 +396,7 @@ local function createRepTextUI()
     loadingScreen.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     loadingScreen.BackgroundTransparency = 0.5
     loadingScreen.Visible = false
-    loadingScreen.ZIndex = 50
+    loadingScreen.ZIndex = 10050
     loadingScreen.Parent = mainFrame
 
     local loadingBox = Instance.new("Frame")
@@ -394,7 +405,7 @@ local function createRepTextUI()
     loadingBox.BackgroundColor3 = UI_CONFIG.Theme.Dark
     loadingBox.BorderColor3 = UI_CONFIG.Theme.Border
     loadingBox.BorderSizePixel = 2
-    loadingBox.ZIndex = 51
+    loadingBox.ZIndex = 10051
     loadingBox.Parent = loadingScreen
 
     local loadCorner = Instance.new("UICorner")
@@ -404,6 +415,7 @@ local function createRepTextUI()
     local dotsContainer = Instance.new("Frame")
     dotsContainer.Size = UDim2.new(1, 0, 0.5, 0)
     dotsContainer.BackgroundTransparency = 1
+    dotsContainer.ZIndex = 10052
     dotsContainer.Parent = loadingBox
 
     local dots = {}
@@ -414,6 +426,7 @@ local function createRepTextUI()
         dot.BackgroundColor3 = UI_CONFIG.Theme.Border
         dot.BorderSizePixel = 0
         dot.Text = ""
+        dot.ZIndex = 10053
         dot.Parent = dotsContainer
 
         local dotCorner = Instance.new("UICorner")
@@ -430,6 +443,7 @@ local function createRepTextUI()
     loadText.TextSize = 8
     loadText.Font = Enum.Font.GothamBold
     loadText.Text = "Loading..."
+    loadText.ZIndex = 10051
     loadText.Parent = loadingBox
 
     -- Variables
@@ -450,6 +464,7 @@ local function createRepTextUI()
         btn.Font = Enum.Font.GothamBold
         btn.Text = REPORT_TEXTS[categoryName].title
         btn.TextWrapped = true
+        btn.ZIndex = 10000
         btn.Parent = categoryScroll
 
         local btnCorner = Instance.new("UICorner")
@@ -496,6 +511,7 @@ local function createRepTextUI()
                 textCard.BackgroundColor3 = UI_CONFIG.Theme.Card
                 textCard.BorderColor3 = UI_CONFIG.Theme.Border
                 textCard.BorderSizePixel = 1
+                textCard.ZIndex = 10000
                 textCard.Parent = textScroll
 
                 local cardCorner = Instance.new("UICorner")
@@ -512,6 +528,7 @@ local function createRepTextUI()
                 textLabel.TextWrapped = true
                 textLabel.TextXAlignment = Enum.TextXAlignment.Left
                 textLabel.TextYAlignment = Enum.TextYAlignment.Top
+                textLabel.ZIndex = 10001
                 textLabel.Parent = textCard
 
                 local labelPadding = Instance.new("UIPadding")
@@ -530,6 +547,7 @@ local function createRepTextUI()
                 copyBtn.TextSize = 7
                 copyBtn.Font = Enum.Font.GothamBold
                 copyBtn.Text = "COPY"
+                copyBtn.ZIndex = 10001
                 copyBtn.Parent = textCard
 
                 local btnCorner2 = Instance.new("UICorner")
