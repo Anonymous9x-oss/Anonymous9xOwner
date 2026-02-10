@@ -172,27 +172,26 @@ local function createRepTextUI()
     mainCorner.CornerRadius = UDim.new(0, 6)
     mainCorner.Parent = mainFrame
     
-    -- Drag Support
+    -- Drag Support (hanya di title text area)
     local isDragging = false
     local dragStart = Vector2.new(0, 0)
     local dragOffset = Vector2.new(0, 0)
     
-    mainFrame.InputBegan:Connect(function(input, gameProcessed)
+    titleText.InputBegan:Connect(function(input, gameProcessed)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             isDragging = true
             dragStart = input.Position
-            dragOffset = mainFrame.Position.X.Offset - input.Position.X
-            dragOffset = Vector2.new(dragOffset, mainFrame.Position.Y.Offset - input.Position.Y)
+            dragOffset = Vector2.new(mainFrame.Position.X.Offset - input.Position.X, mainFrame.Position.Y.Offset - input.Position.Y)
         end
     end)
     
-    mainFrame.InputEnded:Connect(function(input, gameProcessed)
+    titleText.InputEnded:Connect(function(input, gameProcessed)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             isDragging = false
         end
     end)
     
-    mainFrame.InputChanged:Connect(function(input, gameProcessed)
+    titleText.InputChanged:Connect(function(input, gameProcessed)
         if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
             local newX = input.Position.X + dragOffset.X
             local newY = input.Position.Y + dragOffset.Y
@@ -213,71 +212,106 @@ local function createRepTextUI()
     titleCorner.CornerRadius = UDim.new(0, 6)
     titleCorner.Parent = titleBar
     
+    -- Title Text (draggable area)
     local titleText = Instance.new("TextLabel")
-    titleText.Size = UDim2.new(1, -60, 1, 0)
+    titleText.Size = UDim2.new(1, -78, 1, 0)
     titleText.BackgroundTransparency = 1
     titleText.TextColor3 = UI_CONFIG.Theme.Text
-    titleText.TextSize = 11
+    titleText.TextSize = 10
     titleText.Font = Enum.Font.GothamBold
-    titleText.Text = "Anonymous9x RepText"
+    titleText.Text = "Anonymous9x"
     titleText.TextXAlignment = Enum.TextXAlignment.Left
     titleText.Parent = titleBar
     
     local titlePadding = Instance.new("UIPadding")
-    titlePadding.PaddingLeft = UDim.new(0, 8)
+    titlePadding.PaddingLeft = UDim.new(0, 6)
     titlePadding.Parent = titleText
     
-    -- Help Button
+    -- Button Container (keeps all buttons in bounds)
+    local buttonContainer = Instance.new("Frame")
+    buttonContainer.Size = UDim2.new(0, 72, 1, 0)
+    buttonContainer.Position = UDim2.new(1, -72, 0, 0)
+    buttonContainer.BackgroundTransparency = 1
+    buttonContainer.Parent = titleBar
+    
+    -- Help Button (leftmost)
     local helpBtn = Instance.new("TextButton")
     helpBtn.Name = "HelpBtn"
-    helpBtn.Size = UDim2.new(0, 24, 0, 24)
-    helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Dark
+    helpBtn.Size = UDim2.new(0, 22, 0, 22)
+    helpBtn.Position = UDim2.new(0, 2, 0.5, -11)
+    helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
     helpBtn.BorderColor3 = UI_CONFIG.Theme.Border
     helpBtn.BorderSizePixel = 1
     helpBtn.TextColor3 = UI_CONFIG.Theme.Text
-    helpBtn.TextSize = 12
+    helpBtn.TextSize = 11
     helpBtn.Font = Enum.Font.GothamBold
     helpBtn.Text = "?"
-    helpBtn.Position = UDim2.new(1, -58, 0, 4)
-    helpBtn.Parent = titleBar
+    helpBtn.Parent = buttonContainer
     
     local helpCorner = Instance.new("UICorner")
     helpCorner.CornerRadius = UDim.new(0, 3)
     helpCorner.Parent = helpBtn
     
+    -- Minimize Button (middle)
     local minimizeBtn = Instance.new("TextButton")
     minimizeBtn.Name = "MinimizeBtn"
-    minimizeBtn.Size = UDim2.new(0, 24, 0, 24)
-    minimizeBtn.BackgroundColor3 = UI_CONFIG.Theme.Dark
+    minimizeBtn.Size = UDim2.new(0, 22, 0, 22)
+    minimizeBtn.Position = UDim2.new(0, 26, 0.5, -11)
+    minimizeBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
     minimizeBtn.BorderColor3 = UI_CONFIG.Theme.Border
     minimizeBtn.BorderSizePixel = 1
     minimizeBtn.TextColor3 = UI_CONFIG.Theme.Text
-    minimizeBtn.TextSize = 14
+    minimizeBtn.TextSize = 13
     minimizeBtn.Font = Enum.Font.GothamBold
     minimizeBtn.Text = "−"
-    minimizeBtn.Position = UDim2.new(1, -34, 0, 4)
-    minimizeBtn.Parent = titleBar
+    minimizeBtn.Parent = buttonContainer
     
     local minCorner = Instance.new("UICorner")
     minCorner.CornerRadius = UDim.new(0, 3)
     minCorner.Parent = minimizeBtn
     
+    -- Close Button (rightmost)
     local closeBtn = Instance.new("TextButton")
     closeBtn.Name = "CloseBtn"
-    closeBtn.Size = UDim2.new(0, 24, 0, 24)
-    closeBtn.BackgroundColor3 = UI_CONFIG.Theme.Dark
+    closeBtn.Size = UDim2.new(0, 22, 0, 22)
+    closeBtn.Position = UDim2.new(0, 50, 0.5, -11)
+    closeBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
     closeBtn.BorderColor3 = UI_CONFIG.Theme.Border
     closeBtn.BorderSizePixel = 1
     closeBtn.TextColor3 = UI_CONFIG.Theme.Text
-    closeBtn.TextSize = 14
+    closeBtn.TextSize = 13
     closeBtn.Font = Enum.Font.GothamBold
     closeBtn.Text = "×"
-    closeBtn.Position = UDim2.new(1, -10, 0, 4)
-    closeBtn.Parent = titleBar
+    closeBtn.Parent = buttonContainer
     
     local closeCorner = Instance.new("UICorner")
     closeCorner.CornerRadius = UDim.new(0, 3)
     closeCorner.Parent = closeBtn
+    
+    -- Button hover effects
+    helpBtn.MouseEnter:Connect(function()
+        helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
+    end)
+    
+    helpBtn.MouseLeave:Connect(function()
+        helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
+    end)
+    
+    minimizeBtn.MouseEnter:Connect(function()
+        minimizeBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
+    end)
+    
+    minimizeBtn.MouseLeave:Connect(function()
+        minimizeBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
+    end)
+    
+    closeBtn.MouseEnter:Connect(function()
+        closeBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
+    end)
+    
+    closeBtn.MouseLeave:Connect(function()
+        closeBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
+    end)
     
     -- Content Frame
     local contentFrame = Instance.new("Frame")
@@ -554,14 +588,25 @@ local function createRepTextUI()
         createCategoryButton(categoryName)
     end
     
-    -- Button Functions
+    -- Button Click Handlers (Fixed)
+    local helpClicked = false
     helpBtn.MouseButton1Click:Connect(function()
-        helpPanel.Visible = not helpPanel.Visible
-        contentFrame.Visible = not contentFrame.Visible
+        helpClicked = not helpClicked
+        if helpClicked then
+            helpPanel.Visible = true
+            contentFrame.Visible = false
+            helpBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+        else
+            helpPanel.Visible = false
+            contentFrame.Visible = true
+            helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
+        end
     end)
     
+    local minimizeClicked = false
     minimizeBtn.MouseButton1Click:Connect(function()
-        if not isMinimized then
+        minimizeClicked = not minimizeClicked
+        if minimizeClicked then
             isMinimized = true
             contentFrame.Visible = false
             helpPanel.Visible = false
@@ -576,7 +621,9 @@ local function createRepTextUI()
     end)
     
     closeBtn.MouseButton1Click:Connect(function()
-        screenGui:Destroy()
+        pcall(function()
+            screenGui:Destroy()
+        end)
     end)
     
     -- Loading Animation
