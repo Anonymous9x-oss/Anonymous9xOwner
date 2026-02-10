@@ -1,4 +1,4 @@
--- Anonymous9x RepText UI - Report Text Generator for Roblox
+-- Anonymous9x RepText UI v1.2 - FIXED VERSION
 -- Theme: Noir (Black Background, White Text & Border)
 -- Mobile & PC Compatible with Horizontal Scroll
 
@@ -9,7 +9,7 @@ local RunService = game:GetService("RunService")
 local UI_CONFIG = {
     Name = "Anonymous9x RepText",
     Creator = "Anonymous9x",
-    Version = "1.0",
+    Version = "1.2",
     Theme = {
         Background = Color3.fromRGB(15, 15, 15),
         Border = Color3.fromRGB(255, 255, 255),
@@ -182,7 +182,7 @@ local REPORT_TEXTS = {
     }
 }
 
--- Main GUI Creation
+-- Main GUI Creation dengan Better Error Handling
 local function createRepTextUI()
     local screenGui = Instance.new("ScreenGui")
     screenGui.Name = "RepTextUI"
@@ -269,7 +269,9 @@ local function createRepTextUI()
     categoryContainer.BorderSizePixel = 1
     categoryContainer.ScrollBarThickness = 4
     categoryContainer.CanvasSize = UDim2.new(6, 0, 0, 50)
-    categoryContainer.ScrollDirection = Enum.ScrollDirection.X
+    pcall(function() 
+        categoryContainer.ScrollDirection = Enum.ScrollDirection.X 
+    end)
     categoryContainer.Parent = contentFrame
     
     local categoryLayout = Instance.new("UIListLayout")
@@ -430,7 +432,6 @@ local function createRepTextUI()
         
         btn.MouseButton1Click:Connect(function()
             loadingScreen.Visible = true
-            spinner.Text = "⠋"
             
             -- Reset previous selection
             if selectedCategory and categoryContainer:FindFirstChild(selectedCategory) then
@@ -587,13 +588,11 @@ local function createRepTextUI()
     -- Mobile Scroll Support
     local function setupMobileScroll()
         local startX = 0
-        local startY = 0
         
         mainFrame.InputBegan:Connect(function(input, gameProcessed)
             if gameProcessed then return end
             if input.UserInputType == Enum.UserInputType.Touch then
                 startX = input.Position.X
-                startY = input.Position.Y
             end
         end)
         
@@ -629,13 +628,11 @@ local function safeCreateUI()
     
     if not success then
         warn("RepText UI Error: " .. tostring(err))
-        -- Fallback - try again
-        task.wait(1)
-        safeCreateUI()
+        task.wait(0.5)
     end
 end
 
 -- Initialize
 safeCreateUI()
 
-print("✓ Anonymous9x RepText UI Loaded Successfully")
+print("✓ Anonymous9x RepText UI v1.2 Loaded Successfully - FIXED VERSION")
