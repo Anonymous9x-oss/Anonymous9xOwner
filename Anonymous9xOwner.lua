@@ -43,7 +43,7 @@ local Config = {
         {Name = "Dex Explorer", Icon = "Misc", URL = "https://raw.githubusercontent.com/infyiff/backup/main/dex.lua", Desc = "can check the contents of the script map"}, 
         {Name = "Hypol fakedonate", Icon = "Chaos", URL = "https://pastebin.com/raw/yaGNQ4i3", Desc = "donate FE with a system that manipulates product developers"},
         {Name = "Hitbox Universal", Icon = "Main", URL = "https://pastebin.com/raw/BWD0p374", Desc = "can help you hit players with hitboxes with a sophisticated engine that auto scans maps to see if they can hitbox or not"}, 
-        {Name = "Report Text", Icon = "Misc", URL = "https://pastebin.com/raw/CcJuePh3", Desc = "copy text that can make it easier for you to ban players who are in violation by reporting"},
+        {Name = "Report Text", Icon = "Misc", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/PanelGUIVip.lua", Desc = "copy text that can make it easier for you to ban players who are in violation by reporting"},
         {Name = "Aimbot Universal", Icon = "Main", URL = "https://pastebin.com/raw/ey0WnWUv", Desc = "can help you hit players with lock aim or aim assist"}, 
         {Name = "AutoWalk Universal", Icon = "Main", URL = "https://pastebin.com/raw/fbUrKRbG", Desc = "autowalk with full features, record manually"},
         {Name = "Jump Power", Icon = "Main", URL = "https://pastebin.com/raw/eiDMNdLC", Desc = "can adjust your jump height with particle effects"}, 
