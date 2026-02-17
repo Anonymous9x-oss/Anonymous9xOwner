@@ -1,713 +1,383 @@
--- Anonymous9x RepText UI v2.3 - FINAL PRODUCTION VERSION
--- Ultra Compact 240x290px | Back Button | Improved Help | Longer Texts
+--[[
+    ANONYMOUS9x VIP - MAIN GUI (UPGRADED VERSION v2.1)
+]]
 
-local UserInputService = game:GetService("UserInputService")
+-- Check if credentials exist
+if not _G.VIP_CREDENTIALS then
+    warn(">> [ANONYMOUS9x]: No credentials found! Loading login panel...")
+    return
+end
+
+-- Main Configuration
+local Config = {
+    Title = "ANONYMOUS9x VIP",
+    LogoID = "rbxassetid://97269958324726",
+    Theme = {
+        Primary = Color3.fromRGB(255, 255, 255),
+        Background = Color3.fromRGB(8, 8, 8),
+        Card = Color3.fromRGB(15, 15, 15),
+        Border = Color3.fromRGB(255, 255, 255),
+        HackerGreen = Color3.fromRGB(0, 255, 100),
+        Text = Color3.fromRGB(255, 255, 255)
+    },
+    Scripts = {
+        {Name = "Hybrid Attack", Icon = "Chaos", URL = "https://pastebin.com/raw/yTv5hwc5", Desc = "spam attack v1 auto attack 100k can't be changed."},
+        {Name = "Spam Armagedon", Icon = "Chaos", URL = "https://pastebin.com/raw/dXNtX5PB", Desc = "spam attack v2 with customizable attacks, with full scan"},
+        {Name = "Fly Noclip", Icon = "Player", URL = "https://pastebin.com/raw/ZrRwsPAe", Desc = "universal mobile fly with analog, keyboard with wasd"},
+        {Name = "ESP Master", Icon = "Player", URL = "https://pastebin.com/raw/zdqzRRDe", Desc = "can see other players without range"},
+        {Name = "Speed Walk", Icon = "Player", URL = "https://pastebin.com/raw/BAqbsBx0", Desc = "easily adjust your running speed"},
+        {Name = "Ghost Mode", Icon = "Player", URL = "https://pastebin.com/raw/A26bz69Q", Desc = "set yourself to be invisible so you can become a ghost equipped with speedboost"},
+        {Name = "No Clip", Icon = "Player", URL = "https://pastebin.com/raw/4Y3ium6c", Desc = "set you up so you can go through walls or other parts"},
+        {Name = "Infinite Jump", Icon = "Player", URL = "https://pastebin.com/raw/qrMSz160", Desc = "you can do jump spam"},
+        {Name = "Spectator Full", Icon = "Player", URL = "https://pastebin.com/raw/yYrK3kNi", Desc = "Spectator All Player with tp, follow, kick features"},
+        {Name = "Fling Player", Icon = "Chaos", URL = "https://pastebin.com/raw/0r27fM5A", Desc = "can kick a player very high"},
+        -- 20 New Slots Added 
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
+        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"}
+    }
+}
+
+-- Services
+local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
-
-local UI_CONFIG = {
-    Name = "Anonymous9x RepText",
-    Creator = "Anonymous9x",
-    Version = "2.3",
-    Theme = {
-        Background = Color3.fromRGB(12, 12, 12),
-        Dark = Color3.fromRGB(18, 18, 18),
-        Card = Color3.fromRGB(22, 22, 22),
-        Border = Color3.fromRGB(255, 255, 255),
-        Text = Color3.fromRGB(255, 255, 255),
-        TextSecondary = Color3.fromRGB(200, 200, 200),
-        Hover = Color3.fromRGB(35, 35, 35),
-        Accent = Color3.fromRGB(45, 45, 45)
-    }
-}
-
-local REPORT_TEXTS = {
-    ["Harassment"] = {
-        title = "Harassment",
-        texts = {
-            "I was repeatedly targeted with persistent harassment including toxic language, insults, and disrespectful comments directed specifically at me during gameplay sessions. This player's behavior clearly violates Roblox community standards and creates a significantly negative environment that affects other players' enjoyment of the game. The harassment continued even after I requested them to stop, demonstrating intentional disregard for community guidelines.",
-            "I am a victim of ongoing systematic harassment from another player. They used offensive language and personal insults directed at me specifically, attempting to provoke confrontation and make me uncomfortable in the game environment. Multiple witnesses were present during these incidents and can confirm the repeated nature of this behavior.",
-            "A player engaged in a coordinated harassment campaign against me including persistent name-calling, derogatory remarks, and public humiliation attempts. This constitutes clear bullying behavior that significantly disrupts normal gameplay experience for me and observers. The targeting was clearly intentional and persistent over multiple game sessions.",
-            "I was harassed by a player with constant insults and toxic behavior throughout multiple consecutive game sessions. When I requested them to stop engaging in this behavior, the harassment continued unabated and even intensified. This is a clear and serious violation of Roblox community guidelines and creates an unsafe gaming environment."
-        }
-    },
-    ["18+ Content"] = {
-        title = "18+ Content",
-        texts = {
-            "A player created and distributed inappropriate 18+ sexual content within the game environment. Sexual dialogue, explicit material, and adult-themed messaging are clearly present which directly violates Roblox community standards for an all-ages platform. The content is deliberately designed to be inappropriate and has made other players visibly uncomfortable.",
-            "A player repeatedly engaged in explicit sexual roleplay and posted adult content throughout the public game chat and communication channels. This explicitly violates platform policy regarding mature content that has absolutely no place on a family-friendly game where minors are present.",
-            "I witnessed inappropriate and explicit sexual behavior including graphic language and adult roleplay scenarios from another player directed at multiple people. Multiple players witnessed this conduct and reported feeling uncomfortable and distressed. Immediate action is required as this is a serious violation of content policies.",
-            "A player repeatedly spammed 18+ content and explicit sexual messages throughout the public chat system. They actively attempted to engage other players in adult conversations and continued despite being ignored and asked to stop. This is a clear and serious policy violation affecting the entire player base.",
-            "A player actively promoted adult content with direct links and references to inappropriate material that is completely unsuitable for the platform. This directly violates Roblox Terms of Service regarding sexual content that is completely inappropriate on a youth-oriented platform."
-        }
-    },
-    ["Advertising"] = {
-        title = "Advertising",
-        texts = {
-            "A player repeatedly spammed advertisements and promotional messages in the game chat system. They posted multiple external links and promotional content in direct violation of platform rules and continued doing so even after being asked to stop. This behavior significantly disrupted the normal game experience for everyone playing.",
-            "I observed a player continuously advertising external Discord servers, YouTube channels, streaming platforms, and other promotional links throughout the game chat. This is prohibited advertising behavior that clearly violates Roblox platform policies and creates spam.",
-            "There was significant and disruptive spam flooding in the game chat with repetitive messages, multiple external links, and promotional content that severely disrupted normal gameplay. The same player posted these identical messages numerous times, demonstrating clearly intentional spam behavior.",
-            "A player engaged in persistent and aggressive spam advertising including game recommendations, Discord server invites, external links, and various promotional content throughout their gaming session. This behavior clearly violates anti-spam policy and makes the game unenjoyable.",
-            "I observed a player repeatedly advertise and spam the same promotional content and external links multiple times within a short timeframe. This creates clear and significant disruption to the game environment and chat quality for all players trying to enjoy the game."
-        }
-    },
-    ["Exploiting"] = {
-        title = "Exploiting",
-        texts = {
-            "I observed another player utilizing an exploit or hack that clearly grants them unfair gameplay advantage over legitimate players. I directly witnessed them flying through the air, using speed hacks to move unnaturally fast, and becoming invisible in a game where none of these abilities exist normally or legitimately. This breaches game integrity completely.",
-            "A player was actively using a game exploit or vulnerability that I could clearly observe and document. They were walking through solid walls, having infinite health that never decreases, and teleporting around the map instantly. This unfair advantage was confirmed by multiple other players in the game.",
-            "I detected clear and obvious exploitation from another player using unfair methods. They were using external tools or scripts to gain an unfair advantage in the game. This behavior is ruining the experience for all legitimate players and severely affects competitive fairness.",
-            "I confirmed a player using exploits with impossible abilities that absolutely should not exist in normal gameplay. They were generating infinite money and items from nothing, clearly demonstrating a serious code violation that breaks the game balance.",
-            "A player was utilizing a paid exploit menu or mod tool to gain unfair advantages. I observed wallhacking and speedhacking which was clearly affecting other players' gameplay experience negatively and creating unfair competition that ruins the game."
-        }
-    },
-    ["Scamming"] = {
-        title = "Scamming",
-        texts = {
-            "I was scammed by a player in a game trade interaction. They promised certain valuable items in exchange for my items but completely failed to deliver on their promise. This is fraudulent behavior that directly violates the game's trading guidelines and took advantage of my trust.",
-            "A player conducted a clear and intentional scam operation targeting me. They took my valuable items and in-game currency with false promises of return that never happened. Multiple other players have reported being scammed by the same person using the same deceptive methods.",
-            "I am a victim of a scam from another player who was deliberately fraudulent. They promised to provide specific services or items but completely failed to deliver as promised, leaving me worse off. I lost significant in-game currency due to this deliberate scam.",
-            "A player is running an ongoing scam scheme actively targeting multiple players. They make false promises to players in exchange for items and currency, taking what they want without delivering. Multiple reports from other players confirm this is an ongoing pattern of fraudulent activity.",
-            "I was scammed by a player who engaged in item and currency fraud deliberately. They took my items claiming they would be doubled or returned, but kept everything and ghosted me. This is clear scamming behavior and intentional theft of player items."
-        }
-    },
-    ["Racism"] = {
-        title = "Racism",
-        texts = {
-            "A player used racist slurs and discriminatory language toward other players in the game. They engaged in hate speech that was directed at players based on race and ethnicity. This behavior is completely unacceptable and violates community standards.",
-            "I observed a player engaged in discriminatory behavior and hate speech. They made racist comments and hateful language directed at multiple players creating a hostile environment. Multiple witnesses were present and can confirm this behavior.",
-            "A player directed racism at other players in a clearly intentional way. They used racial slurs and discriminatory statements about race and nationality. This violates anti-discrimination policy and creates an unsafe environment for targeted players.",
-            "I witnessed a player make discriminatory comments based on religion and ethnicity. They used hateful language that violates community standards for a respectful and inclusive environment.",
-            "A player actively promoted discriminatory ideology through racist remarks and hate speech. This directly violates platform policy on equality and respect for all players of any background."
-        }
-    },
-    ["Threats"] = {
-        title = "Threats",
-        texts = {
-            "A player made serious threatening statements toward me in the game. They made death threats and used intimidation tactics attempting to scare me and coerce my behavior. These are direct threats that create genuine fear and concern.",
-            "I reported another player who threatened me with doxxing and real-world physical harm. This is serious threatening behavior that requires immediate action and investigation by the safety team.",
-            "A player engaged in targeted intimidation directed at me. They made threatening statements about hacking my account and falsely reporting me to coerce compliance with their demands.",
-            "I received violent threats from a player including specific threats of harm. This constitutes serious threatening behavior that is a clear policy violation and creates genuine safety concerns.",
-            "A player threatened to file false reports against me, hack my account, and cause real-world harm to me personally. These are intimidation tactics creating an unsafe environment and require investigation."
-        }
-    },
-    ["Username"] = {
-        title = "Username",
-        texts = {
-            "A player has an inappropriate username containing offensive language and slurs. This violates username policy requirements that are necessary for maintaining a respectful community environment for all players.",
-            "The username I observed contains explicit adult content that is inappropriate and unsuitable for this platform. This represents a clear breach of username policy as it contains adult references and offensive slurs.",
-            "A player's username contains hate speech and slurs. This directly violates Roblox naming standards and community conduct requirements that prohibit discriminatory and hateful usernames.",
-            "I found a username that includes sexual and adult content that is completely inappropriate for a family-friendly platform. This breaches username conduct policy significantly.",
-            "A player's username contains offensive language and slurs that creates a hostile environment. This violates community standards for username selection and appropriateness."
-        }
-    },
-    ["Game Content"] = {
-        title = "Game Content",
-        texts = {
-            "This game contains inappropriate 18+ sexual content throughout the game. Explicit dialogue, animations, and digital assets are present that violate platform content policy for what should be an all-ages game. The sexual content is clear and intentional.",
-            "This game features adult content including repeated sexual references and mature material that is unsuitable for the Roblox platform. It violates content guidelines that protect younger players.",
-            "This game includes hate speech and offensive content throughout. Racial slurs and discriminatory material are present in game mechanics and dialogue. This is a clear policy violation.",
-            "This game contains excessive violence and gore that is inappropriate for platform standards. The graphic content violates age-appropriate content guidelines and is disturbing.",
-            "This game is designed to promote adult behavior and sexual roleplay. The content and game mechanics explicitly violate Roblox community standards for appropriate game experiences."
-        }
-    },
-    ["Impersonation"] = {
-        title = "Impersonation",
-        texts = {
-            "Another player is impersonating me or another legitimate player. Their username and avatar are designed to look identical to the real account, causing confusion and enabling fraud through deception.",
-            "A player is impersonating a game developer or staff member. They make false claims of authority which cause confusion among other players. This violates impersonation policy and enables deception.",
-            "A player created an account impersonating a legitimate account to scam and deceive other players. The fake account is designed to look nearly identical to the real account and has fooled multiple people.",
-            "A player is pretending to be my friend or a content creator to deceive other players. They are deceiving players for personal gain through this false identity. This is a clear impersonation violation.",
-            "I observed a clear impersonation attempt where a player mimicked a verified account appearance to conduct fraud. Multiple players were deceived by this false identity."
-        }
-    },
-    ["Child Safety"] = {
-        title = "Child Safety",
-        texts = {
-            "A player exhibited behavior that is deeply concerning regarding child safety. They made inappropriate comments directed toward younger players in the game which raises serious safety concerns.",
-            "I observed a player engaged in grooming behavior toward younger players. They attempted to manipulate children into private conversations for inappropriate purposes. This is predatory behavior.",
-            "I am reporting a critical child safety concern: A player made solicitations toward minors that are inappropriate and concerning. This is a clear policy violation requiring immediate investigation by the safety team.",
-            "I witnessed predatory behavior from a player who was targeting younger players. They made inappropriate proposals and requests that caused visible discomfort to the minors. This requires urgent attention.",
-            "A player attempted to contact younger players for inappropriate offline communication. This is a major safety concern requiring immediate action to protect minors on the platform."
-        }
-    },
-    ["Bot Account"] = {
-        title = "Bot Account",
-        texts = {
-            "I identified another account that appears to be a bot or fake account. The automated behavior and spam patterns are obvious and suspicious. This account does not appear to be a legitimate player.",
-            "An account is displaying clear bot characteristics including highly repetitive behavior and suspicious activity patterns. The account appears to be completely automated and not controlled by a real person.",
-            "I observed a suspicious account exhibiting bot-like behavior. Automated responses and unnatural gameplay patterns strongly suggest this is a fake account.",
-            "I confirmed an account is likely a bot. It shows zero legitimate gameplay interaction and only engages in repetitive spam and advertising behavior.",
-            "An account has been confirmed as a bot account. It displays automated advertising and spam patterns with a suspicious activity timeline. This is not a genuine player account."
-        }
-    },
-    ["Toxicity"] = {
-        title = "Toxicity",
-        texts = {
-            "I observed a player exhibiting toxic and rude behavior toward multiple other players. They used aggressive language and made disrespectful comments throughout their entire gameplay session.",
-            "A player displayed extremely toxic behavior in the game chat. They made rude comments, complained excessively, and created a negative atmosphere affecting everyone.",
-            "I witnessed toxicity from a player who made rude remarks to other players, complained constantly, and created a very negative game atmosphere.",
-            "A player displayed rudeness and a generally toxic attitude. They gave aggressive responses and treated other players with disrespect.",
-            "A player exhibited toxic behavior including rude language and disrespectful treatment of other players. This creates a negative community experience for all."
-        }
-    }
-}
-
-local function createRepTextUI()
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "RepTextUI"
-    screenGui.ResetOnSpawn = false
-    screenGui.DisplayOrder = 999
-    screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling -- Penting!
-
-    local mainFrame = Instance.new("Frame")
-    mainFrame.Name = "MainFrame"
-    mainFrame.Size = UDim2.new(0, 240, 0, 290)
-    mainFrame.Position = UDim2.new(0.5, -120, 0.5, -145)
-    mainFrame.BackgroundColor3 = UI_CONFIG.Theme.Background
-    mainFrame.BorderColor3 = UI_CONFIG.Theme.Border
-    mainFrame.BorderSizePixel = 2
-    mainFrame.ZIndex = 9999 -- ZIndex sangat tinggi
-    mainFrame.Parent = screenGui
-
-    local mainCorner = Instance.new("UICorner")
-    mainCorner.CornerRadius = UDim.new(0, 6)
-    mainCorner.Parent = mainFrame
-
-    -- Title Bar (ALWAYS VISIBLE)
-    local titleBar = Instance.new("Frame")
-    titleBar.Name = "TitleBar"
-    titleBar.Size = UDim2.new(1, 0, 0, 32)
-    titleBar.BackgroundColor3 = UI_CONFIG.Theme.Dark
-    titleBar.BorderColor3 = UI_CONFIG.Theme.Border
-    titleBar.BorderSizePixel = 1
-    titleBar.ZIndex = 10000 -- Lebih tinggi dari mainFrame
-    titleBar.Parent = mainFrame
-
-    local titleCorner = Instance.new("UICorner")
-    titleCorner.CornerRadius = UDim.new(0, 6)
-    titleCorner.Parent = titleBar
-
-    local titleText = Instance.new("TextLabel")
-    titleText.Name = "TitleText"
-    titleText.Size = UDim2.new(1, -70, 1, 0)
-    titleText.BackgroundTransparency = 1
-    titleText.TextColor3 = UI_CONFIG.Theme.Text
-    titleText.TextSize = 11
-    titleText.Font = Enum.Font.GothamBold
-    titleText.Text = "Anonymous9x"
-    titleText.TextXAlignment = Enum.TextXAlignment.Left
-    titleText.ZIndex = 10001 -- Lebih tinggi dari titleBar
-    titleText.Parent = titleBar
-
-    local titlePadding = Instance.new("UIPadding")
-    titlePadding.PaddingLeft = UDim.new(0, 6)
-    titlePadding.Parent = titleText
-
-    -- Button Container
-    local buttonContainer = Instance.new("Frame")
-    buttonContainer.Name = "ButtonContainer"
-    buttonContainer.Size = UDim2.new(0, 72, 1, 0)
-    buttonContainer.Position = UDim2.new(1, -72, 0, 0)
-    buttonContainer.BackgroundTransparency = 1
-    buttonContainer.ZIndex = 10001
-    buttonContainer.Parent = titleBar
-
-    -- Help Button
-    local helpBtn = Instance.new("TextButton")
-    helpBtn.Name = "HelpBtn"
-    helpBtn.Size = UDim2.new(0, 22, 0, 22)
-    helpBtn.Position = UDim2.new(0, 2, 0.5, -11)
-    helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-    helpBtn.BorderColor3 = UI_CONFIG.Theme.Border
-    helpBtn.BorderSizePixel = 1
-    helpBtn.TextColor3 = UI_CONFIG.Theme.Text
-    helpBtn.TextSize = 11
-    helpBtn.Font = Enum.Font.GothamBold
-    helpBtn.Text = "?"
-    helpBtn.ZIndex = 10002 -- Lebih tinggi dari buttonContainer
-    helpBtn.Parent = buttonContainer
-
-    local helpCorner = Instance.new("UICorner")
-    helpCorner.CornerRadius = UDim.new(0, 3)
-    helpCorner.Parent = helpBtn
-
-    -- Minimize Button
-    local minimizeBtn = Instance.new("TextButton")
-    minimizeBtn.Name = "MinimizeBtn"
-    minimizeBtn.Size = UDim2.new(0, 22, 0, 22)
-    minimizeBtn.Position = UDim2.new(0, 26, 0.5, -11)
-    minimizeBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-    minimizeBtn.BorderColor3 = UI_CONFIG.Theme.Border
-    minimizeBtn.BorderSizePixel = 1
-    minimizeBtn.TextColor3 = UI_CONFIG.Theme.Text
-    minimizeBtn.TextSize = 13
-    minimizeBtn.Font = Enum.Font.GothamBold
-    minimizeBtn.Text = "−"
-    minimizeBtn.ZIndex = 10002
-    minimizeBtn.Parent = buttonContainer
-
-    local minCorner = Instance.new("UICorner")
-    minCorner.CornerRadius = UDim.new(0, 3)
-    minCorner.Parent = minimizeBtn
-
-    -- Close Button
-    local closeBtn = Instance.new("TextButton")
-    closeBtn.Name = "CloseBtn"
-    closeBtn.Size = UDim2.new(0, 22, 0, 22)
-    closeBtn.Position = UDim2.new(0, 50, 0.5, -11)
-    closeBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-    closeBtn.BorderColor3 = UI_CONFIG.Theme.Border
-    closeBtn.BorderSizePixel = 1
-    closeBtn.TextColor3 = UI_CONFIG.Theme.Text
-    closeBtn.TextSize = 13
-    closeBtn.Font = Enum.Font.GothamBold
-    closeBtn.Text = "×"
-    closeBtn.ZIndex = 10002
-    closeBtn.Parent = buttonContainer
-
-    local closeCorner = Instance.new("UICorner")
-    closeCorner.CornerRadius = UDim.new(0, 3)
-    closeCorner.Parent = closeBtn
-
-    -- Content Frame
-    local contentFrame = Instance.new("Frame")
-    contentFrame.Name = "ContentFrame"
-    contentFrame.Size = UDim2.new(1, 0, 1, -32)
-    contentFrame.Position = UDim2.new(0, 0, 0, 32)
-    contentFrame.BackgroundTransparency = 1
-    contentFrame.ZIndex = 9999
-    contentFrame.Parent = mainFrame
-
-    -- Category Scroll
-    local categoryScroll = Instance.new("ScrollingFrame")
-    categoryScroll.Name = "CategoryScroll"
-    categoryScroll.Size = UDim2.new(1, 0, 0, 38)
-    categoryScroll.BackgroundColor3 = UI_CONFIG.Theme.Dark
-    categoryScroll.BorderColor3 = UI_CONFIG.Theme.Border
-    categoryScroll.BorderSizePixel = 1
-    categoryScroll.ScrollBarThickness = 2
-    categoryScroll.CanvasSize = UDim2.new(4, 0, 0, 38)
-    categoryScroll.ZIndex = 9999
-    categoryScroll.Parent = contentFrame
-
-    pcall(function()
-        categoryScroll.ScrollDirection = Enum.ScrollDirection.X
-    end)
-
-    local catLayout = Instance.new("UIListLayout")
-    catLayout.FillDirection = Enum.FillDirection.Horizontal
-    catLayout.Padding = UDim.new(0, 4)
-    catLayout.Parent = categoryScroll
-
-    local catPadding = Instance.new("UIPadding")
-    catPadding.PaddingLeft = UDim.new(0, 4)
-    catPadding.PaddingRight = UDim.new(0, 4)
-    catPadding.Parent = categoryScroll
-
-    -- Text Scroll
-    local textScroll = Instance.new("ScrollingFrame")
-    textScroll.Name = "TextScroll"
-    textScroll.Size = UDim2.new(1, 0, 1, -42)
-    textScroll.Position = UDim2.new(0, 0, 0, 38)
-    textScroll.BackgroundColor3 = UI_CONFIG.Theme.Background
-    textScroll.BorderColor3 = UI_CONFIG.Theme.Border
-    textScroll.BorderSizePixel = 1
-    textScroll.ScrollBarThickness = 2
-    textScroll.CanvasSize = UDim2.new(0, 0, 10, 0)
-    textScroll.ZIndex = 9999
-    textScroll.Parent = contentFrame
-
-    local textLayout = Instance.new("UIListLayout")
-    textLayout.FillDirection = Enum.FillDirection.Vertical
-    textLayout.Padding = UDim.new(0, 4)
-    textLayout.Parent = textScroll
-
-    local textPadding = Instance.new("UIPadding")
-    textPadding.PaddingLeft = UDim.new(0, 5)
-    textPadding.PaddingRight = UDim.new(0, 5)
-    textPadding.PaddingTop = UDim.new(0, 5)
-    textPadding.PaddingBottom = UDim.new(0, 5)
-    textPadding.Parent = textScroll
-
-    -- Help Panel (with Back button)
-    local helpPanel = Instance.new("Frame")
-    helpPanel.Name = "HelpPanel"
-    helpPanel.Size = UDim2.new(1, 0, 1, -32)
-    helpPanel.Position = UDim2.new(0, 0, 0, 32)
-    helpPanel.BackgroundColor3 = UI_CONFIG.Theme.Background
-    helpPanel.Visible = false
-    helpPanel.ZIndex = 10000
-    helpPanel.Parent = mainFrame
-
-    -- Back Button in Help Panel
-    local backBtn = Instance.new("TextButton")
-    backBtn.Name = "BackBtn"
-    backBtn.Size = UDim2.new(1, -10, 0, 24)
-    backBtn.Position = UDim2.new(0, 5, 0, 5)
-    backBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-    backBtn.BorderColor3 = UI_CONFIG.Theme.Border
-    backBtn.BorderSizePixel = 1
-    backBtn.TextColor3 = UI_CONFIG.Theme.Text
-    backBtn.TextSize = 9
-    backBtn.Font = Enum.Font.GothamBold
-    backBtn.Text = "← Back"
-    backBtn.ZIndex = 10001
-    backBtn.Parent = helpPanel
-
-    local backCorner = Instance.new("UICorner")
-    backCorner.CornerRadius = UDim.new(0, 3)
-    backCorner.Parent = backBtn
-
-    -- Help Scroll
-    local helpScroll = Instance.new("ScrollingFrame")
-    helpScroll.Name = "HelpScroll"
-    helpScroll.Size = UDim2.new(1, 0, 1, -34)
-    helpScroll.Position = UDim2.new(0, 0, 0, 30)
-    helpScroll.BackgroundTransparency = 1
-    helpScroll.ScrollBarThickness = 2
-    helpScroll.CanvasSize = UDim2.new(0, 0, 5, 0)
-    helpScroll.ZIndex = 10000
-    helpScroll.Parent = helpPanel
-
-    local helpText = Instance.new("TextLabel")
-    helpText.Name = "HelpText"
-    helpText.Size = UDim2.new(1, -10, 0, 200)
-    helpText.BackgroundTransparency = 1
-    helpText.TextColor3 = UI_CONFIG.Theme.TextSecondary
-    helpText.TextSize = 7.5
-    helpText.Font = Enum.Font.Gotham
-    helpText.Text = "📋 HOW TO USE:\n\n1️⃣ SCROLL CATEGORIES\nSwipe left/right to find category\n\n2️⃣ CLICK CATEGORY\nClick to load report texts\n\n3️⃣ READ PREVIEW\nRead text in card\n\n4️⃣ COPY TEXT\nClick COPY button\n\n5️⃣ OPEN REPORT FORM\nGo to Roblox report\n\n6️⃣ PASTE\nCtrl+V or Cmd+V\n\n7️⃣ SUBMIT\nSubmit your report\n\n🎮 DRAG UI:\nClick & drag title bar anywhere\n\n➖ MINIMIZE:\nClick − button (header stays visible)\n\n❌ CLOSE:\nClick × button\n\n❓ HELP:\nClick ? button (you are here)"
-    helpText.TextWrapped = true
-    helpText.TextXAlignment = Enum.TextXAlignment.Left
-    helpText.TextYAlignment = Enum.TextYAlignment.Top
-    helpText.ZIndex = 10001
-    helpText.Parent = helpScroll
-
-    local helpPadding = Instance.new("UIPadding")
-    helpPadding.PaddingLeft = UDim.new(0, 5)
-    helpPadding.PaddingRight = UDim.new(0, 5)
-    helpPadding.PaddingTop = UDim.new(0, 5)
-    helpPadding.Parent = helpText
-
-    -- Loading Screen
-    local loadingScreen = Instance.new("Frame")
-    loadingScreen.Name = "LoadingScreen"
-    loadingScreen.Size = UDim2.new(1, 0, 1, 0)
-    loadingScreen.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    loadingScreen.BackgroundTransparency = 0.5
-    loadingScreen.Visible = false
-    loadingScreen.ZIndex = 10050
-    loadingScreen.Parent = mainFrame
-
-    local loadingBox = Instance.new("Frame")
-    loadingBox.Size = UDim2.new(0, 90, 0, 60)
-    loadingBox.Position = UDim2.new(0.5, -45, 0.5, -30)
-    loadingBox.BackgroundColor3 = UI_CONFIG.Theme.Dark
-    loadingBox.BorderColor3 = UI_CONFIG.Theme.Border
-    loadingBox.BorderSizePixel = 2
-    loadingBox.ZIndex = 10051
-    loadingBox.Parent = loadingScreen
-
-    local loadCorner = Instance.new("UICorner")
-    loadCorner.CornerRadius = UDim.new(0, 4)
-    loadCorner.Parent = loadingBox
-
-    local dotsContainer = Instance.new("Frame")
-    dotsContainer.Size = UDim2.new(1, 0, 0.5, 0)
-    dotsContainer.BackgroundTransparency = 1
-    dotsContainer.ZIndex = 10052
-    dotsContainer.Parent = loadingBox
-
-    local dots = {}
-    for i = 1, 3 do
-        local dot = Instance.new("TextLabel")
-        dot.Size = UDim2.new(0, 4, 0, 4)
-        dot.Position = UDim2.new(0.5, -10 + (i-1)*10, 0.5, -2)
-        dot.BackgroundColor3 = UI_CONFIG.Theme.Border
-        dot.BorderSizePixel = 0
-        dot.Text = ""
-        dot.ZIndex = 10053
-        dot.Parent = dotsContainer
-
-        local dotCorner = Instance.new("UICorner")
-        dotCorner.CornerRadius = UDim.new(1, 0)
-        dotCorner.Parent = dot
-        dots[i] = dot
-    end
-
-    local loadText = Instance.new("TextLabel")
-    loadText.Size = UDim2.new(1, 0, 0.5, 0)
-    loadText.Position = UDim2.new(0, 0, 0.5, 0)
-    loadText.BackgroundTransparency = 1
-    loadText.TextColor3 = UI_CONFIG.Theme.Text
-    loadText.TextSize = 8
-    loadText.Font = Enum.Font.GothamBold
-    loadText.Text = "Loading..."
-    loadText.ZIndex = 10051
-    loadText.Parent = loadingBox
-
-    -- Variables
-    local isMinimized = false
-    local helpShowing = false
-    local selectedCategory = nil
-
-    -- Create Category Button
-    local function createCategoryButton(categoryName)
-        local btn = Instance.new("TextButton")
-        btn.Name = categoryName
-        btn.Size = UDim2.new(0, 50, 0, 30)
-        btn.BackgroundColor3 = UI_CONFIG.Theme.Dark
-        btn.BorderColor3 = UI_CONFIG.Theme.Border
-        btn.BorderSizePixel = 1
-        btn.TextColor3 = UI_CONFIG.Theme.TextSecondary
-        btn.TextSize = 7
-        btn.Font = Enum.Font.GothamBold
-        btn.Text = REPORT_TEXTS[categoryName].title
-        btn.TextWrapped = true
-        btn.ZIndex = 10000
-        btn.Parent = categoryScroll
-
-        local btnCorner = Instance.new("UICorner")
-        btnCorner.CornerRadius = UDim.new(0, 3)
-        btnCorner.Parent = btn
-
-        btn.MouseEnter:Connect(function()
-            btn.BackgroundColor3 = UI_CONFIG.Theme.Hover
-            btn.TextColor3 = UI_CONFIG.Theme.Text
-        end)
-
-        btn.MouseLeave:Connect(function()
-            if selectedCategory ~= categoryName then
-                btn.BackgroundColor3 = UI_CONFIG.Theme.Dark
-                btn.TextColor3 = UI_CONFIG.Theme.TextSecondary
-            end
-        end)
-
-        btn.MouseButton1Click:Connect(function()
-            loadingScreen.Visible = true
-            helpPanel.Visible = false
-            helpShowing = false
-
-            if selectedCategory and categoryScroll:FindFirstChild(selectedCategory) then
-                categoryScroll:FindFirstChild(selectedCategory).BackgroundColor3 = UI_CONFIG.Theme.Dark
-                categoryScroll:FindFirstChild(selectedCategory).TextColor3 = UI_CONFIG.Theme.TextSecondary
-            end
-
-            selectedCategory = categoryName
-            btn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-            btn.TextColor3 = UI_CONFIG.Theme.Text
-
-            for _, child in ipairs(textScroll:GetChildren()) do
-                if child:IsA("Frame") then
-                    child:Destroy()
-                end
-            end
-
-            wait(0.2)
-
-            for i, text in ipairs(REPORT_TEXTS[categoryName].texts) do
-                local textCard = Instance.new("Frame")
-                textCard.Size = UDim2.new(1, -10, 0, 70)
-                textCard.BackgroundColor3 = UI_CONFIG.Theme.Card
-                textCard.BorderColor3 = UI_CONFIG.Theme.Border
-                textCard.BorderSizePixel = 1
-                textCard.ZIndex = 10000
-                textCard.Parent = textScroll
-
-                local cardCorner = Instance.new("UICorner")
-                cardCorner.CornerRadius = UDim.new(0, 4)
-                cardCorner.Parent = textCard
-
-                local textLabel = Instance.new("TextLabel")
-                textLabel.Size = UDim2.new(1, -6, 1, -26)
-                textLabel.BackgroundTransparency = 1
-                textLabel.TextColor3 = UI_CONFIG.Theme.TextSecondary
-                textLabel.TextSize = 6.5
-                textLabel.Font = Enum.Font.Gotham
-                textLabel.Text = text
-                textLabel.TextWrapped = true
-                textLabel.TextXAlignment = Enum.TextXAlignment.Left
-                textLabel.TextYAlignment = Enum.TextYAlignment.Top
-                textLabel.ZIndex = 10001
-                textLabel.Parent = textCard
-
-                local labelPadding = Instance.new("UIPadding")
-                labelPadding.PaddingLeft = UDim.new(0, 3)
-                labelPadding.PaddingRight = UDim.new(0, 3)
-                labelPadding.PaddingTop = UDim.new(0, 3)
-                labelPadding.Parent = textLabel
-
-                local copyBtn = Instance.new("TextButton")
-                copyBtn.Size = UDim2.new(1, -6, 0, 18)
-                copyBtn.Position = UDim2.new(0, 3, 1, -21)
-                copyBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-                copyBtn.BorderColor3 = UI_CONFIG.Theme.Border
-                copyBtn.BorderSizePixel = 1
-                copyBtn.TextColor3 = UI_CONFIG.Theme.Text
-                copyBtn.TextSize = 7
-                copyBtn.Font = Enum.Font.GothamBold
-                copyBtn.Text = "COPY"
-                copyBtn.ZIndex = 10001
-                copyBtn.Parent = textCard
-
-                local btnCorner2 = Instance.new("UICorner")
-                btnCorner2.CornerRadius = UDim.new(0, 2)
-                btnCorner2.Parent = copyBtn
-
-                copyBtn.MouseEnter:Connect(function()
-                    copyBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
-                end)
-
-                copyBtn.MouseLeave:Connect(function()
-                    copyBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-                end)
-
-                copyBtn.MouseButton1Click:Connect(function()
-                    pcall(function()
-                        setclipboard(text)
-                        copyBtn.Text = "✓"
-                        task.wait(1)
-                        copyBtn.Text = "COPY"
-                    end)
-                end)
-
-                textCard.LayoutOrder = i
-            end
-
-            textScroll.CanvasSize = UDim2.new(0, 0, 0, textLayout.AbsoluteContentSize.Y + 10)
-            loadingScreen.Visible = false
-        end)
-
-        return btn
-    end
-
-    for categoryName, _ in pairs(REPORT_TEXTS) do
-        createCategoryButton(categoryName)
-    end
-
-    -- Button Event Handlers
-    helpBtn.MouseButton1Click:Connect(function()
-        helpShowing = not helpShowing
-        if helpShowing then
-            helpPanel.Visible = true
-            contentFrame.Visible = false
-            helpBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-        else
-            helpPanel.Visible = false
-            contentFrame.Visible = true
-            helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-        end
-    end)
-
-    backBtn.MouseButton1Click:Connect(function()
-        helpShowing = false
-        helpPanel.Visible = false
-        contentFrame.Visible = true
-        helpBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-    end)
-
-    backBtn.MouseEnter:Connect(function()
-        backBtn.BackgroundColor3 = UI_CONFIG.Theme.Hover
-    end)
-
-    backBtn.MouseLeave:Connect(function()
-        backBtn.BackgroundColor3 = UI_CONFIG.Theme.Accent
-    end)
-
-    minimizeBtn.MouseButton1Click:Connect(function()
-        if not isMinimized then
-            isMinimized = true
-            contentFrame.Visible = false
-            helpPanel.Visible = false
-            mainFrame.Size = UDim2.new(0, 240, 0, 32)
-            minimizeBtn.Text = "+"
-        else
-            isMinimized = false
-            contentFrame.Visible = true
-            mainFrame.Size = UDim2.new(0, 240, 0, 290)
-            minimizeBtn.Text = "−"
-        end
-    end)
-
-    closeBtn.MouseButton1Click:Connect(function()
-        pcall(function()
-            screenGui:Destroy()
-        end)
-    end)
-
-    -- Drag Support
-    local isDragging = false
-    local dragOffset = Vector2.new(0, 0)
-
-    titleText.InputBegan:Connect(function(input, gameProcessed)
-        if not gameProcessed and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
-            isDragging = true
-            dragOffset = Vector2.new(mainFrame.Position.X.Offset - input.Position.X, mainFrame.Position.Y.Offset - input.Position.Y)
-        end
-    end)
-
-    titleText.InputEnded:Connect(function(input, gameProcessed)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            isDragging = false
-        end
-    end)
-
-    titleText.InputChanged:Connect(function(input, gameProcessed)
-        if isDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-            local newX = input.Position.X + dragOffset.X
-            local newY = input.Position.Y + dragOffset.Y
-            mainFrame.Position = UDim2.new(0, newX, 0, newY)
-        end
-    end)
-
-    -- Loading Animation
-    RunService.RenderStepped:Connect(function()
-        if loadingScreen.Visible then
-            local elapsed = tick() % 0.6
-            for i, dot in ipairs(dots) do
-                local delay = (i - 1) * 0.1
-                local phase = (elapsed - delay) % 0.6
-                if phase < 0.3 then
-                    local t = phase / 0.3
-                    dot.BackgroundTransparency = 0.5 - (0.3 * t)
-                else
-                    local t = (phase - 0.3) / 0.3
-                    dot.BackgroundTransparency = 0.2 + (0.3 * t)
-                end
-            end
-        end
-    end)
-
-    -- Mobile Swipe
-    local startX = 0
-    contentFrame.InputBegan:Connect(function(input, gameProcessed)
-        if gameProcessed then return end
-        if input.UserInputType == Enum.UserInputType.Touch then
-            startX = input.Position.X
-        end
-    end)
-
-    contentFrame.InputChanged:Connect(function(input, gameProcessed)
-        if input.UserInputType == Enum.UserInputType.Touch then
-            local deltaX = startX - input.Position.X
-            if math.abs(deltaX) > 2 then
-                categoryScroll.CanvasPosition = categoryScroll.CanvasPosition + Vector2.new(deltaX * 0.5, 0)
-                startX = input.Position.X
-            end
-        end
-    end)
-
-    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-    return screenGui
+local StatsService = game:GetService("Stats")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+-- Find existing ScreenGui
+local ScreenGui = PlayerGui:FindFirstChild("HorizontalHub")
+if not ScreenGui then
+    ScreenGui = Instance.new("ScreenGui", PlayerGui)
+    ScreenGui.Name = "HorizontalHub"
+    ScreenGui.ResetOnSpawn = false
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 end
 
-local function safeInit()
-    local success, err = pcall(createRepTextUI)
-    if not success then
-        warn("RepText Error: " .. tostring(err))
-    else
-        print("✓ Anonymous9x RepText v2.3 - FINAL VERSION LOADED!")
-    end
+-- Helper Functions
+local function AddStroke(obj, thickness, color)
+    local s = Instance.new("UIStroke", obj)
+    s.Color = color or Config.Theme.Border
+    s.Thickness = thickness or 1
+    s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    return s
 end
 
-safeInit()
+-- ==================== LOADING SCREEN ====================
+local function RunLoadingScreen()
+    local LoadingFrame = Instance.new("Frame", ScreenGui)
+    LoadingFrame.Name = "LoadingFrame"
+    LoadingFrame.Size = UDim2.new(1, 0, 1, 0)
+    LoadingFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    LoadingFrame.BackgroundTransparency = 0.7
+    LoadingFrame.ZIndex = 999
+    
+    local LoadingContainer = Instance.new("Frame", LoadingFrame)
+    LoadingContainer.Size = UDim2.new(0.8, 0, 0, 100)
+    LoadingContainer.Position = UDim2.new(0.1, 0, 0.4, 0)
+    LoadingContainer.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+    LoadingContainer.ZIndex = 1000
+    Instance.new("UICorner", LoadingContainer).CornerRadius = UDim.new(0, 8)
+    AddStroke(LoadingContainer, 1, Config.Theme.HackerGreen)
+    
+    local LoadingText = Instance.new("TextLabel", LoadingContainer)
+    LoadingText.Size = UDim2.new(0.9, 0, 0.7, 0)
+    LoadingText.Position = UDim2.new(0.05, 0, 0.1, 0)
+    LoadingText.BackgroundTransparency = 1
+    LoadingText.TextColor3 = Config.Theme.HackerGreen
+    LoadingText.Font = Enum.Font.Code
+    LoadingText.TextSize = 11
+    LoadingText.TextXAlignment = "Left"
+    LoadingText.TextYAlignment = "Top"
+    LoadingText.Text = "> VERIFYING VIP ACCESS..."
+    LoadingText.ZIndex = 1001
+    
+    local dots = {"", ".", "..", "..."}
+    local dotIndex = 1
+    local dotsConnection
+    
+    dotsConnection = RunService.Heartbeat:Connect(function()
+        LoadingText.Text = "> LOADING VIP MODULES" .. dots[dotIndex]
+        dotIndex = dotIndex + 1
+        if dotIndex > #dots then dotIndex = 1 end
+    end)
+    
+    return LoadingFrame, dotsConnection
+end
+
+-- ==================== MAIN PANEL ====================
+local AppWindow = Instance.new("Frame", ScreenGui)
+AppWindow.Size = UDim2.new(0, 420, 0, 320)
+AppWindow.Position = UDim2.new(0.5, -210, 0.5, -160)
+AppWindow.BackgroundColor3 = Config.Theme.Background
+AppWindow.Visible = false
+AppWindow.Active = true
+Instance.new("UICorner", AppWindow).CornerRadius = UDim.new(0, 10)
+AddStroke(AppWindow, 2)
+
+-- Header
+local Header = Instance.new("Frame", AppWindow)
+Header.Size = UDim2.new(1, 0, 0, 50)
+Header.BackgroundTransparency = 1
+
+local Avatar = Instance.new("ImageLabel", Header)
+Avatar.Image = Config.LogoID
+Avatar.Size = UDim2.new(0, 30, 0, 30)
+Avatar.Position = UDim2.new(0, 15, 0.5, -15)
+Avatar.BackgroundTransparency = 1
+
+local Username = Instance.new("TextLabel", Header)
+Username.Text = Config.Title
+Username.Size = UDim2.new(0, 160, 0, 20)
+Username.Position = UDim2.new(0, 55, 0.5, -10)
+Username.TextColor3 = Config.Theme.Text
+Username.Font = Enum.Font.GothamBlack
+Username.TextSize = 14
+Username.TextXAlignment = "Left"
+Username.BackgroundTransparency = 1
+
+-- Minimize Button
+local MinimizedApp = Instance.new("TextButton", ScreenGui)
+MinimizedApp.Size = UDim2.new(0, 45, 0, 45)
+MinimizedApp.Position = UDim2.new(0.02, 0, 0.02, 0)
+MinimizedApp.BackgroundColor3 = Config.Theme.Background
+MinimizedApp.Visible = false
+MinimizedApp.Text = ""
+Instance.new("UICorner", MinimizedApp).CornerRadius = UDim.new(0, 8)
+AddStroke(MinimizedApp, 2)
+
+local MinIcon = Instance.new("ImageLabel", MinimizedApp)
+MinIcon.Size = UDim2.new(0.6, 0, 0.6, 0)
+MinIcon.Position = UDim2.new(0.2, 0, 0.2, 0)
+MinIcon.Image = Config.LogoID
+MinIcon.BackgroundTransparency = 1
+
+-- Search
+local Search = Instance.new("TextBox", Header)
+Search.Size = UDim2.new(0, 100, 0, 24)
+Search.Position = UDim2.new(1, -220, 0.5, -12)
+Search.Text = ""
+Search.PlaceholderText = "Search..."
+Search.BackgroundColor3 = Config.Theme.Card
+Search.TextColor3 = Color3.new(1,1,1)
+Search.Font = Enum.Font.GothamBold
+Search.TextSize = 11
+Instance.new("UICorner", Search)
+AddStroke(Search, 0.5)
+
+-- Header Buttons
+local function makeBtn(txt, x, col, func)
+    local b = Instance.new("TextButton", Header)
+    b.Size = UDim2.new(0, 28, 0, 28)
+    b.Position = UDim2.new(1, x, 0.5, -14)
+    b.BackgroundColor3 = col
+    b.Text = txt
+    b.Font = Enum.Font.GothamBlack
+    b.TextSize = 14
+    b.TextColor3 = Color3.new(1,1,1)
+    Instance.new("UICorner", b)
+    b.MouseButton1Click:Connect(func)
+end
+
+makeBtn("×", -35, Color3.fromRGB(180, 0, 0), function() ScreenGui:Destroy() end)
+makeBtn("−", -70, Config.Theme.Card, function() AppWindow.Visible = false MinimizedApp.Visible = true end)
+makeBtn("ℹ", -105, Color3.fromRGB(50, 50, 50), function()
+    if AppWindow:FindFirstChild("InfoPanel") then AppWindow.InfoPanel:Destroy() else
+        local p = Instance.new("Frame", AppWindow)
+        p.Name = "InfoPanel"
+        p.Size = UDim2.new(0, 220, 0, 150)
+        p.Position = UDim2.new(0.5, -110, 0.5, -75)
+        p.BackgroundColor3 = Config.Theme.Card
+        p.ZIndex = 500
+        Instance.new("UICorner", p)
+        AddStroke(p, 1)
+        local t = Instance.new("TextLabel", p)
+        t.Size = UDim2.new(1, -30, 1, -20)
+        t.Position = UDim2.new(0, 15, 0, 10)
+        t.BackgroundTransparency = 1
+        t.TextColor3 = Color3.new(1,1,1)
+        t.Font = Enum.Font.GothamBold
+        t.TextSize = 11
+        t.TextXAlignment = "Left"
+        t.Text = "• Key Access : Lifetime\n• User : VIP\n• Version : PRIVATE\n• Created By : Anonymous9x\n• Tiktok : @anonymous9x_"
+        t.ZIndex = 501
+        local cl = Instance.new("TextButton", p)
+        cl.Size = UDim2.new(1,0,1,0)
+        cl.BackgroundTransparency = 1
+        cl.Text = ""
+        cl.ZIndex = 502
+        cl.MouseButton1Click:Connect(function() p:Destroy() end)
+    end
+end)
+
+-- Scrolling Frame
+local Scroll = Instance.new("ScrollingFrame", AppWindow)
+Scroll.Size = UDim2.new(1, -20, 0, 190)
+Scroll.Position = UDim2.new(0, 10, 0, 60)
+Scroll.BackgroundTransparency = 1
+Scroll.ScrollBarThickness = 6
+Scroll.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 255)
+Scroll.CanvasSize = UDim2.new(0, 0, 0, 0)
+Scroll.BorderSizePixel = 0
+
+local ScrollPadding = Instance.new("UIPadding", Scroll)
+ScrollPadding.PaddingTop = UDim.new(0, 12)
+ScrollPadding.PaddingBottom = UDim.new(0, 12)
+
+local Layout = Instance.new("UIListLayout", Scroll)
+Layout.FillDirection = Enum.FillDirection.Horizontal
+Layout.Padding = UDim.new(0, 15)
+Layout.SortOrder = Enum.SortOrder.LayoutOrder
+
+Layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+    Scroll.CanvasSize = UDim2.new(0, Layout.AbsoluteContentSize.X, 0, 0)
+end)
+
+for _, s in ipairs(Config.Scripts) do
+    local Card = Instance.new("Frame", Scroll)
+    Card.Name = s.Name
+    Card.Size = UDim2.new(0, 140, 0, 180)
+    Card.BackgroundColor3 = Config.Theme.Card
+    Card.LayoutOrder = _
+    Instance.new("UICorner", Card)
+    AddStroke(Card, 1)
+    
+    local I = Instance.new("TextLabel", Card)
+    I.Text = s.Icon
+    I.Size = UDim2.new(1, 0, 0, 35)
+    I.Position = UDim2.new(0, 0, 0, 10)
+    I.TextColor3 = Color3.new(1,1,1)
+    I.Font = Enum.Font.GothamBlack
+    I.TextSize = 16
+    I.BackgroundTransparency = 1
+    
+    local N = Instance.new("TextLabel", Card)
+    N.Text = s.Name
+    N.Size = UDim2.new(1, -10, 0, 20)
+    N.Position = UDim2.new(0, 5, 0, 45)
+    N.TextColor3 = Color3.new(1,1,1)
+    N.Font = Enum.Font.GothamBlack
+    N.TextSize = 12
+    N.BackgroundTransparency = 1
+    
+    local D = Instance.new("TextLabel", Card)
+    D.Text = s.Desc
+    D.Size = UDim2.new(1,-20,0,60)
+    D.Position = UDim2.new(0,10,0,75)
+    D.TextColor3 = Color3.fromRGB(180,180,180)
+    D.Font = Enum.Font.GothamBold
+    D.TextSize = 9
+    D.TextWrapped = true
+    D.TextXAlignment = "Left"
+    D.TextYAlignment = "Top"
+    D.BackgroundTransparency = 1
+
+    local L = Instance.new("TextButton", Card)
+    L.Text = "EXECUTE"
+    L.Size = UDim2.new(0.85, 0, 0, 28)
+    L.Position = UDim2.new(0.075, 0, 1, -35)
+    L.BackgroundColor3 = Color3.new(1,1,1)
+    L.TextColor3 = Color3.new(0,0,0)
+    L.Font = Enum.Font.GothamBlack
+    L.TextSize = 10
+    Instance.new("UICorner", L).CornerRadius = UDim.new(0, 6)
+    L.MouseButton1Click:Connect(function() if s.URL ~= "" then loadstring(game:HttpGet(s.URL))() end end)
+end
+
+-- ==================== NEW MARQUEE TEXT ====================
+local MarqueeContainer = Instance.new("Frame", AppWindow)
+MarqueeContainer.Size = UDim2.new(1, -20, 0, 15)
+MarqueeContainer.Position = UDim2.new(0, 10, 1, -63)
+MarqueeContainer.BackgroundTransparency = 1
+MarqueeContainer.ClipsDescendants = true
+
+local MarqueeText = Instance.new("TextLabel", MarqueeContainer)
+MarqueeText.Size = UDim2.new(0, 400, 1, 0)
+MarqueeText.Position = UDim2.new(1, 0, 0, 0)
+MarqueeText.BackgroundTransparency = 1
+MarqueeText.TextColor3 = Config.Theme.HackerGreen
+MarqueeText.Font = Enum.Font.Code
+MarqueeText.TextSize = 10
+MarqueeText.Text = "NOT GREAT BUT GROWING AND LEARNING || THX FOR YOUR SUPPORT AND PURCHASES LOVE YOU ALL"
+MarqueeText.TextXAlignment = Enum.TextXAlignment.Left
+
+task.spawn(function()
+    while true do
+        MarqueeText.Position = UDim2.new(1, 0, 0, 0)
+        local tween = TweenService:Create(MarqueeText, TweenInfo.new(10, Enum.EasingStyle.Linear), {Position = UDim2.new(-1.2, 0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+    end
+end)
+
+-- Footer
+local Footer = Instance.new("Frame", AppWindow)
+Footer.Size = UDim2.new(1, -20, 0, 35)
+Footer.Position = UDim2.new(0, 10, 1, -45)
+Footer.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
+Instance.new("UICorner", Footer)
+AddStroke(Footer, 1, Config.Theme.HackerGreen)
+
+local TerminalTxt = Instance.new("TextLabel", Footer)
+TerminalTxt.Size = UDim2.new(0.95, 0, 1, 0)
+TerminalTxt.Position = UDim2.new(0.025, 0, 0, 0)
+TerminalTxt.BackgroundTransparency = 1
+TerminalTxt.TextColor3 = Config.Theme.HackerGreen
+TerminalTxt.Font = Enum.Font.Code
+TerminalTxt.TextSize = 10
+TerminalTxt.TextXAlignment = "Left"
+TerminalTxt.Text = "> INITIALIZING MONITOR..."
+
+-- Monitor Function
+local function StartMonitor()
+    task.spawn(function()
+        while task.wait(0.5) do
+            local ping = "0ms"
+            pcall(function() ping = math.floor(StatsService.Network.ServerStatsItem["Data Ping"]:GetValue()) .. "ms" end)
+            local mem = math.floor(StatsService:GetTotalMemoryUsageMb()) .. "MB"
+            local fps = math.floor(1/RunService.RenderStepped:Wait())
+            TerminalTxt.Text = string.format("> NET: %s | MEM: %s | FPS: %d | VIP ACTIVE", ping, mem, fps)
+        end
+    end)
+end
+
+-- Event Handlers
+MinimizedApp.MouseButton1Click:Connect(function() AppWindow.Visible = true MinimizedApp.Visible = false end)
+Search:GetPropertyChangedSignal("Text"):Connect(function()
+    local q = Search.Text:lower()
+    for _, card in pairs(Scroll:GetChildren()) do
+        if card:IsA("Frame") then card.Visible = card.Name:lower():find(q) and true or false end
+    end
+end)
+
+-- ==================== INITIALIZATION ====================
+local function InitializeGUI()
+    local LoadingFrame, dotsConnection = RunLoadingScreen()
+    task.spawn(function()
+        task.wait(1.5)
+        if LoadingFrame:FindFirstChild("LoadingContainer") then
+            local loadingText = LoadingFrame.LoadingContainer:FindFirstChildOfClass("TextLabel")
+            if loadingText then loadingText.Text = "> VERIFICATION SUCCESSFUL\n> LOADING INTERFACE..." end
+        end
+        task.wait(1)
+        if dotsConnection then dotsConnection:Disconnect() end
+        local fadeTween = TweenService:Create(LoadingFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quad), {BackgroundTransparency = 1})
+        fadeTween:Play()
+        fadeTween.Completed:Connect(function()
+            LoadingFrame:Destroy()
+            AppWindow.Visible = true
+            StartMonitor()
+            print(">> [ANONYMOUS9x VIP Main GUI]: Loaded Successfully!")
+        end)
+    end)
+end
+
+InitializeGUI()
