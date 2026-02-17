@@ -21,27 +21,27 @@ local Config = {
         Text = Color3.fromRGB(255, 255, 255)
     },
     Scripts = {
-        {Name = "Hybrid Attack", Icon = "Chaos", URL = "https://pastebin.com/raw/yTv5hwc5", Desc = "spam attack v1 auto attack 100k can't be changed."},
+        {Name = "Hybrid Attack", Icon = "Chaos", URL = "https://pastebin.com/raw/yTv5hwc5", Desc = "spam attack v1 automatic unlimited attack, click stop if you want to stop"},
         {Name = "Spam Armagedon", Icon = "Chaos", URL = "https://pastebin.com/raw/dXNtX5PB", Desc = "spam attack v2 with customizable attacks, with full scan"},
-        {Name = "Fly Noclip", Icon = "Player", URL = "https://pastebin.com/raw/ZrRwsPAe", Desc = "universal mobile fly with analog, keyboard with wasd"},
-        {Name = "ESP Master", Icon = "Player", URL = "https://pastebin.com/raw/zdqzRRDe", Desc = "can see other players without range"},
-        {Name = "Speed Walk", Icon = "Player", URL = "https://pastebin.com/raw/BAqbsBx0", Desc = "easily adjust your running speed"},
-        {Name = "Ghost Mode", Icon = "Player", URL = "https://pastebin.com/raw/A26bz69Q", Desc = "set yourself to be invisible so you can become a ghost equipped with speedboost"},
-        {Name = "No Clip", Icon = "Player", URL = "https://pastebin.com/raw/4Y3ium6c", Desc = "set you up so you can go through walls or other parts"},
-        {Name = "Infinite Jump", Icon = "Player", URL = "https://pastebin.com/raw/qrMSz160", Desc = "you can do jump spam"},
+        {Name = "Fly Noclip", Icon = "Main", URL = "https://pastebin.com/raw/ZrRwsPAe", Desc = "universal mobile fly with analog, keyboard with wasd"},
+        {Name = "ESP Master", Icon = "Main", URL = "https://pastebin.com/raw/zdqzRRDe", Desc = "can see other players without range"},
+        {Name = "Speed Walk", Icon = "Main", URL = "https://pastebin.com/raw/BAqbsBx0", Desc = "easily adjust your running speed"},
+        {Name = "Ghost Mode", Icon = "Main", URL = "https://pastebin.com/raw/A26bz69Q", Desc = "set yourself to be invisible so you can become a ghost equipped with speedboost"},
+        {Name = "No Clip", Icon = "Main", URL = "https://pastebin.com/raw/4Y3ium6c", Desc = "set you up so you can go through walls or other parts"},
+        {Name = "Infinite Jump", Icon = "Main", URL = "https://pastebin.com/raw/qrMSz160", Desc = "you can do jump spam"},
         {Name = "Spectator Full", Icon = "Player", URL = "https://pastebin.com/raw/yYrK3kNi", Desc = "Spectator All Player with tp, follow, kick features"},
         {Name = "Fling Player", Icon = "Chaos", URL = "https://pastebin.com/raw/0r27fM5A", Desc = "can kick a player very high"},
         -- 20 New Slots Added 
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"},
-        {Name = "?", Icon = "?", URL = "", Desc = "?"}, {Name = "?", Icon = "?", URL = "", Desc = "?"}
+        {Name = "Follow Target", Icon = "Player", URL = "https://pastebin.com/raw/9wx2KS2Z", Desc = "stick to the player like a magnet with realtime player list"}, {Name = "Bringpart Wrld", Icon = "Chaos", URL = "https://pastebin.com/raw/a26kitCS", Desc = "lift all parts with a super wide radius up to one map but low strength"},
+        {Name = "Adidas animasi", Icon = "FE", URL = "https://pastebin.com/raw/tzx26Sbr", Desc = "full pack adidas animation FE"}, {Name = "Magnetpart", Icon = "Chaos", URL = "https://pastebin.com/raw/LNVRDWZD", Desc = "can pull large parts with super strength but small radius"},
+        {Name = "Emote", Icon = "FE", URL = "https://pastebin.com/raw/2uudnFFW", Desc = "full emote with simple UI"}, {Name = "Copy Avatar", Icon = "VIs/FE", URL = "https://pastebin.com/raw/DbvucrBF", Desc = "copy avatar with dual engine can FE if there is a map that is affected, Visual if the map is good"},
+        {Name = "Boost Fps", Icon = "Misc", URL = "https://pastebin.com/raw/2vMAdcms", Desc = "can improve the performance of your device"}, {Name = "Tp Tool", Icon = "Main", URL = "https://pastebin.com/raw/8pczZX3P", Desc = "give you simple teleport tool without ui"},
+        {Name = "Dex Explorer", Icon = "Misc", URL = "https://raw.githubusercontent.com/infyiff/backup/main/dex.lua", Desc = "can check the contents of the script map"}, {Name = "Hypol fakedonate", Icon = "Chaos", URL = "https://pastebin.com/raw/yaGNQ4i3", Desc = "donate FE with a system that manipulates product developers"},
+        {Name = "Hitbox Universal", Icon = "Main", URL = "https://pastebin.com/raw/BWD0p374", Desc = "can help you hit players with hitboxes with a sophisticated engine that auto scans maps to see if they can hitbox or not"}, {Name = "Report Text", Icon = "Misc", URL = "https://pastebin.com/raw/CcJuePh3", Desc = "copy text that can make it easier for you to ban players who are in violation by reporting"},
+        {Name = "Aimbot Universal", Icon = "Main", URL = "https://pastebin.com/raw/ey0WnWUv", Desc = "can help you hit players with lock aim or aim assist"}, {Name = "AutoWalk Universal", Icon = "Main", URL = "https://pastebin.com/raw/fbUrKRbG", Desc = "autowalk with full features, record manually"},
+        {Name = "Jump Power", Icon = "Main", URL = "https://pastebin.com/raw/eiDMNdLC", Desc = "can adjust your jump height with particle effects"}, {Name = "AutoTp Universal", Icon = "Main", URL = "https://pastebin.com/raw/1Q3ZLFT6", Desc = "teleport by getting location manually"},
+        {Name = "Fun3", Icon = "Vis/FE", URL = "https://pastebin.com/raw/Ld1WEWVt", Desc = "features for fun in one ui panel with 3 features"}, {Name = "Freecam", Icon = "Main", URL = "https://pastebin.com/raw/sHvYLsGW", Desc = "fly freely with your camera like a drone"},
+        {Name = "Executor", Icon = "Misc", URL = "https://pastebin.com/raw/bdPnW9mn", Desc = "loader executor that can run other scripts here"}, {Name = "?", Icon = "?", URL = "", Desc = "?"}
     }
 }
 
