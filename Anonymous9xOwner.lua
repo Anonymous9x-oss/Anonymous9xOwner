@@ -1,5 +1,6 @@
 --[[
     ANONYMOUS9x VIP - MAIN GUI (UPGRADED VERSION v2.1)
+    FIX: LOADING ANIMATION POSITION & TEXT SEQUENCE
 ]]
 
 -- Check if credentials exist
@@ -79,20 +80,33 @@ local function AddStroke(obj, thickness, color)
     return s
 end
 
--- ==================== LOADING SCREEN ====================
+-- ==================== MAIN PANEL (Create First for Reference) ====================
+local AppWindow = Instance.new("Frame", ScreenGui)
+AppWindow.Size = UDim2.new(0, 420, 0, 320)
+AppWindow.Position = UDim2.new(0.5, -210, 0.5, -160)
+AppWindow.BackgroundColor3 = Config.Theme.Background
+AppWindow.Visible = false
+AppWindow.Active = true
+Instance.new("UICorner", AppWindow).CornerRadius = UDim.new(0, 10)
+AddStroke(AppWindow, 2)
+
+-- ==================== FIXED LOADING SCREEN ====================
 local function RunLoadingScreen()
-    local LoadingFrame = Instance.new("Frame", ScreenGui)
+    -- Loading Frame sekarang menempel di AppWindow (Panel Utama) agar tidak nutupin layar
+    local LoadingFrame = Instance.new("Frame", AppWindow)
     LoadingFrame.Name = "LoadingFrame"
     LoadingFrame.Size = UDim2.new(1, 0, 1, 0)
     LoadingFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    LoadingFrame.BackgroundTransparency = 0.7
-    LoadingFrame.ZIndex = 999
+    LoadingFrame.BackgroundTransparency = 0.1
+    LoadingFrame.ZIndex = 2000
+    LoadingFrame.Visible = true
+    Instance.new("UICorner", LoadingFrame).CornerRadius = UDim.new(0, 10)
     
     local LoadingContainer = Instance.new("Frame", LoadingFrame)
     LoadingContainer.Size = UDim2.new(0.8, 0, 0, 100)
     LoadingContainer.Position = UDim2.new(0.1, 0, 0.4, 0)
     LoadingContainer.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-    LoadingContainer.ZIndex = 1000
+    LoadingContainer.ZIndex = 2001
     Instance.new("UICorner", LoadingContainer).CornerRadius = UDim.new(0, 8)
     AddStroke(LoadingContainer, 1, Config.Theme.HackerGreen)
     
@@ -105,31 +119,19 @@ local function RunLoadingScreen()
     LoadingText.TextSize = 11
     LoadingText.TextXAlignment = "Left"
     LoadingText.TextYAlignment = "Top"
-    LoadingText.Text = "> VERIFYING VIP ACCESS..."
-    LoadingText.ZIndex = 1001
+    LoadingText.Text = "> ACCESS VIP VERIFIED..."
+    LoadingText.ZIndex = 2002
     
     local dots = {"", ".", "..", "..."}
     local dotIndex = 1
     local dotsConnection
     
     dotsConnection = RunService.Heartbeat:Connect(function()
-        LoadingText.Text = "> LOADING VIP MODULES" .. dots[dotIndex]
-        dotIndex = dotIndex + 1
-        if dotIndex > #dots then dotIndex = 1 end
+        -- Animasi titik-titik tetap jalan
     end)
     
-    return LoadingFrame, dotsConnection
+    return LoadingFrame, LoadingText, dotsConnection
 end
-
--- ==================== MAIN PANEL ====================
-local AppWindow = Instance.new("Frame", ScreenGui)
-AppWindow.Size = UDim2.new(0, 420, 0, 320)
-AppWindow.Position = UDim2.new(0.5, -210, 0.5, -160)
-AppWindow.BackgroundColor3 = Config.Theme.Background
-AppWindow.Visible = false
-AppWindow.Active = true
-Instance.new("UICorner", AppWindow).CornerRadius = UDim.new(0, 10)
-AddStroke(AppWindow, 2)
 
 -- Header
 local Header = Instance.new("Frame", AppWindow)
@@ -366,22 +368,23 @@ Search:GetPropertyChangedSignal("Text"):Connect(function()
     end
 end)
 
--- ==================== INITIALIZATION ====================
+-- ==================== INITIALIZATION (FIXED SEQUENCE) ====================
 local function InitializeGUI()
-    local LoadingFrame, dotsConnection = RunLoadingScreen()
+    AppWindow.Visible = true -- Tampilkan panel dulu
+    local LoadingFrame, LoadingText, dotsConnection = RunLoadingScreen()
+    
     task.spawn(function()
+        task.wait(1.2)
+        LoadingText.Text = "> ACCESS VIP VERIFIED\n> ARE YOU READY?"
+        task.wait(1.2)
+        LoadingText.Text = "> ARE YOU READY?\n> LOADING MODULES..."
         task.wait(1.5)
-        if LoadingFrame:FindFirstChild("LoadingContainer") then
-            local loadingText = LoadingFrame.LoadingContainer:FindFirstChildOfClass("TextLabel")
-            if loadingText then loadingText.Text = "> VERIFICATION SUCCESSFUL\n> LOADING INTERFACE..." end
-        end
-        task.wait(1)
+        
         if dotsConnection then dotsConnection:Disconnect() end
         local fadeTween = TweenService:Create(LoadingFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quad), {BackgroundTransparency = 1})
         fadeTween:Play()
         fadeTween.Completed:Connect(function()
             LoadingFrame:Destroy()
-            AppWindow.Visible = true
             StartMonitor()
             print(">> [ANONYMOUS9x VIP Main GUI]: Loaded Successfully!")
         end)
