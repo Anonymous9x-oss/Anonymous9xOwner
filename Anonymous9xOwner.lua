@@ -50,7 +50,13 @@ local Config = {
         {Name = "AutoTp Universal", Icon = "Main", URL = "https://pastebin.com/raw/1Q3ZLFT6", Desc = "teleport by getting location manually"},
         {Name = "Fun3", Icon = "Vis/FE", URL = "https://pastebin.com/raw/Ld1WEWVt", Desc = "features for fun in one ui panel with 3 features"}, 
         {Name = "Freecam", Icon = "Main", URL = "https://pastebin.com/raw/sHvYLsGW", Desc = "fly freely with your camera like a drone"},
-        {Name = "Executor", Icon = "Misc", URL = "https://pastebin.com/raw/bdPnW9mn", Desc = "loader executor that can run other scripts here"}
+        {Name = "Executor", Icon = "Misc", URL = "https://pastebin.com/raw/bdPnW9mn", Desc = "loader executor that can run other scripts here"},
+        {Name = "Skybox", Icon = "Chaos", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Glitch.lua", Desc = "can do skybox FE with settings to set up a complete skybox, with the condition of purchasing the pro builder bundle"},
+        {Name = "God Mode", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Godmode.lua", Desc = "Immune to all obstacle damage, ragdoll damage, anti-slap, etc. with 11 layer fallback function"},
+        {Name = "KillAura Npc", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/KillAura.lua", Desc = "kill all npc with sigma aura that radiates from you, studs that can be adjusted flexibly"},
+        {Name = "SambungKata", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Sambung%20kata.lua", Desc = "script for in sambung kata,taken from kkbi"},
+        {Name = "SambungKata Collab", Icon = "Main", URL = "https://raw.githubusercontent.com/Fiqqzr7Lua/SCRIPTFIQQZR7/refs/heads/main/Fiqqzr7XAnonymous9x%20SAMBUNG%20KATA", Desc = "special collab with FIQQZR7"},
+        {Name = "FakeDonate Collab", Icon = "Chaos", URL = "https://pastefy.app/28xUWzZX/raw", Desc = "special collab with FIQQZR7"}
     }
 }
 
