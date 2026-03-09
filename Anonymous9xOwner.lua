@@ -41,7 +41,7 @@ local Config = {
         {Name = "Boost Fps", Icon = "Misc", URL = "https://pastebin.com/raw/2vMAdcms", Desc = "can improve the performance of your device"}, 
         {Name = "Tp Tool", Icon = "Main", URL = "https://pastebin.com/raw/8pczZX3P", Desc = "give you simple teleport tool without ui"},
         {Name = "Dex Explorer", Icon = "Misc", URL = "https://raw.githubusercontent.com/infyiff/backup/main/dex.lua", Desc = "can check the contents of the script map"}, 
-        {Name = "Hypol fakedonate", Icon = "Chaos", URL = "https://pastebin.com/raw/yaGNQ4i3", Desc = "donate FE with a system that manipulates product developers"},
+        {Name = "FakeDonate", Icon = "Chaos", URL = "https://pastebin.com/raw/yaGNQ4i3", Desc = "donate FE with a system that manipulates product developers"},
         {Name = "Hitbox Universal", Icon = "Main", URL = "https://pastebin.com/raw/BWD0p374", Desc = "can help you hit players with hitboxes with a sophisticated engine that auto scans maps to see if they can hitbox or not"}, 
         {Name = "Report Text", Icon = "Misc", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/PanelGUIVip.lua", Desc = "copy text that can make it easier for you to ban players who are in violation by reporting"},
         {Name = "Aimbot Universal", Icon = "Main", URL = "https://pastebin.com/raw/ey0WnWUv", Desc = "can help you hit players with lock aim or aim assist"}, 
