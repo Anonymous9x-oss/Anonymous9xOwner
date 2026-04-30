@@ -1,9 +1,10 @@
 --[[
-    ANONYMOUS9x VIP - MAIN GUI (UPGRADED VERSION v2.1)
+    ANONYMOUS9x VIP - MAIN GUI (UPGRADED v2.1)
     FIX: LOADING ANIMATION POSITION & TEXT SEQUENCE
-]]
+    MOD: HEAVY MATRIX RAIN, GLITCH TEXT SCRAMBLE, BLINKING BORDERS
+--]]
 
--- Check if credentials exist
+-- Check if credentials exist (ORIGINAL KEY SYSTEM)
 if not _G.VIP_CREDENTIALS then
     warn(">> [ANONYMOUS9x]: No credentials found! Loading login panel...")
     return
@@ -90,7 +91,7 @@ local function AddStroke(obj, thickness, color)
     return s
 end
 
--- ==================== MAIN PANEL (Create First for Reference) ====================
+-- ==================== MAIN PANEL ====================
 local AppWindow = Instance.new("Frame", ScreenGui)
 AppWindow.Size = UDim2.new(0, 420, 0, 320)
 AppWindow.Position = UDim2.new(0.5, -210, 0.5, -160)
@@ -100,9 +101,193 @@ AppWindow.Active = true
 Instance.new("UICorner", AppWindow).CornerRadius = UDim.new(0, 10)
 AddStroke(AppWindow, 2)
 
+-- ==================== ANIMATED BACKGROUND SYSTEM ====================
+local AnimBackgroundEnabled = true  -- default aktif
+local animatedCards = {}  -- simpan referensi card
+local cardStrokes = {}   -- simpan stroke border tiap card
+
+-- Frame background animasi (di belakang semua elemen)
+local AnimBG = Instance.new("Frame", AppWindow)
+AnimBG.Name = "AnimBG"
+AnimBG.Size = UDim2.new(1, 0, 1, 0)
+AnimBG.BackgroundTransparency = 1
+AnimBG.ZIndex = 0
+
+-- Rain container
+local RainContainer = Instance.new("Frame", AnimBG)
+RainContainer.Size = UDim2.new(1, 0, 1, 0)
+RainContainer.BackgroundTransparency = 1
+RainContainer.ZIndex = 0
+RainContainer.ClipsDescendants = true
+
+-- Glitch text
+local GlitchText = Instance.new("TextLabel", AnimBG)
+GlitchText.Size = UDim2.new(0.8, 0, 0, 36)
+GlitchText.Position = UDim2.new(0.1, 0, 0.44, 0)
+GlitchText.BackgroundTransparency = 1
+GlitchText.Text = "Who is Anonymous9x?"
+GlitchText.TextColor3 = Color3.fromRGB(200, 200, 200)
+GlitchText.Font = Enum.Font.GothamBlack
+GlitchText.TextSize = 22
+GlitchText.TextTransparency = 1
+GlitchText.TextXAlignment = Enum.TextXAlignment.Center
+GlitchText.ZIndex = 5
+
+-- White flash effect
+local WhiteFlash = Instance.new("Frame", AnimBG)
+WhiteFlash.Size = UDim2.new(1, 0, 1, 0)
+WhiteFlash.BackgroundColor3 = Color3.new(1, 1, 1)
+WhiteFlash.BackgroundTransparency = 1
+WhiteFlash.ZIndex = 10
+
+-- Matrix rain: heavy downpour, random characters (alphanumeric + symbols)
+local charPool = {}
+for c = 33, 126 do   -- printable ASCII (33-126)
+    table.insert(charPool, string.char(c))
+end
+local rainChars = {}
+for i = 1, 120 do   -- super banyak
+    local lbl = Instance.new("TextLabel", RainContainer)
+    lbl.Size = UDim2.new(0, 14, 0, 14)
+    lbl.BackgroundTransparency = 1
+    lbl.TextColor3 = Color3.fromRGB(180, 180, 180)   -- abu-abu
+    lbl.Font = Enum.Font.Code
+    lbl.TextSize = 10 + math.random(6)  -- variasi
+    lbl.Text = charPool[math.random(#charPool)]
+    lbl.Position = UDim2.new(math.random(), 0, math.random(), 0)
+    lbl.ZIndex = 0
+    rainChars[#rainChars + 1] = {
+        label = lbl,
+        speed = 2 + math.random()*4,    -- lebih cepat
+        changeInterval = math.random(3, 10)
+    }
+end
+
+-- Update rain loop
+local function startRainLoop()
+    task.spawn(function()
+        local counter = 0
+        while true do
+            if not AnimBackgroundEnabled then task.wait(0.1) continue end
+            counter = counter + 1
+            for _, data in ipairs(rainChars) do
+                local lbl = data.label
+                local pos = lbl.Position
+                local newY = pos.Y.Scale + data.speed * 0.002
+                if newY > 1.1 then
+                    newY = -0.1
+                    lbl.Position = UDim2.new(math.random(), 0, newY, 0)
+                    lbl.Text = charPool[math.random(#charPool)]
+                else
+                    lbl.Position = UDim2.new(pos.X.Scale, 0, newY, 0)
+                    if counter % data.changeInterval == 0 then
+                        lbl.Text = charPool[math.random(#charPool)]
+                    end
+                end
+            end
+            task.wait(0.03)
+        end
+    end)
+end
+
+-- Glitch text animation cycle
+local function startGlitchCycle()
+    task.spawn(function()
+        local baseText = "Who is Anonymous9x?"
+        local prefixLength = 7   -- "Who is " (7 karakter)
+        while true do
+            if not AnimBackgroundEnabled then task.wait(0.5) continue end
+            
+            -- Munculkan teks dengan entrance glitch kecil
+            GlitchText.TextTransparency = 0.8
+            GlitchText.Text = baseText
+            for i = 1, 3 do
+                GlitchText.Position = UDim2.new(0.08 + math.random(-3,3)*0.01, 0, 0.43 + math.random(-2,2)*0.01, 0)
+                task.wait(0.05)
+            end
+            GlitchText.Position = UDim2.new(0.1, 0, 0.44, 0)
+            local tweenIn = TweenService:Create(GlitchText, TweenInfo.new(0.3), {TextTransparency = 0.3})
+            tweenIn:Play()
+            tweenIn.Completed:Wait()
+            
+            task.wait(2)
+            
+            -- Exit glitch: scramble "Anonymous9x?" saja (karakter ke-8 sampai akhir)
+            for _ = 1, 8 do   -- 8 kali scramble cepat
+                local scrambled = baseText:sub(1, prefixLength)
+                for j = prefixLength+1, #baseText do
+                    scrambled = scrambled .. charPool[math.random(#charPool)]
+                end
+                GlitchText.Text = scrambled
+                task.wait(0.04)
+            end
+            GlitchText.Text = baseText
+            
+            -- White flash cinematic
+            WhiteFlash.BackgroundTransparency = 1
+            local tweenFlash = TweenService:Create(WhiteFlash, TweenInfo.new(0.15), {BackgroundTransparency = 0})
+            tweenFlash:Play()
+            tweenFlash.Completed:Wait()
+            GlitchText.TextTransparency = 1
+            local tweenOut = TweenService:Create(WhiteFlash, TweenInfo.new(0.3), {BackgroundTransparency = 1})
+            tweenOut:Play()
+            tweenOut.Completed:Wait()
+            
+            task.wait(0.8)
+        end
+    end)
+end
+
+-- Border blink animation (random double blinks, etc.)
+local function startBorderBlink()
+    task.spawn(function()
+        local dimColor = Color3.fromRGB(60,60,60)   -- gelap saat blink
+        while true do
+            if not AnimBackgroundEnabled then task.wait(0.5) continue end
+            local waitTime = math.random(1, 3)   -- diam 1-3 detik
+            task.wait(waitTime)
+            -- Randomly do single or double blink
+            local blinks = math.random(1,2)
+            for _ = 1, blinks do
+                for _, stroke in ipairs(cardStrokes) do
+                    stroke.Color = dimColor
+                end
+                task.wait(0.06)
+                for _, stroke in ipairs(cardStrokes) do
+                    stroke.Color = Config.Theme.Border
+                end
+                if blinks == 2 then task.wait(0.06) end
+            end
+        end
+    end)
+end
+
+-- Fungsi untuk update transparansi semua elemen sesuai mode
+local function updateVisualMode()
+    for _, card in ipairs(animatedCards) do
+        if AnimBackgroundEnabled then
+            card.BackgroundTransparency = 0.7
+        else
+            card.BackgroundTransparency = 0
+        end
+    end
+    if Footer then
+        if AnimBackgroundEnabled then
+            Footer.BackgroundTransparency = 0.5
+        else
+            Footer.BackgroundTransparency = 0
+        end
+    end
+    AnimBG.Visible = AnimBackgroundEnabled
+    if not AnimBackgroundEnabled then
+        for _, stroke in ipairs(cardStrokes) do
+            stroke.Color = Config.Theme.Border
+        end
+    end
+end
+
 -- ==================== FIXED LOADING SCREEN ====================
 local function RunLoadingScreen()
-    -- Loading Frame sekarang menempel di AppWindow (Panel Utama) agar tidak nutupin layar
     local LoadingFrame = Instance.new("Frame", AppWindow)
     LoadingFrame.Name = "LoadingFrame"
     LoadingFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -132,12 +317,9 @@ local function RunLoadingScreen()
     LoadingText.Text = "> ACCESS VIP VERIFIED..."
     LoadingText.ZIndex = 2002
     
-    local dots = {"", ".", "..", "..."}
-    local dotIndex = 1
     local dotsConnection
     
     dotsConnection = RunService.Heartbeat:Connect(function()
-        -- Animasi titik-titik tetap jalan
     end)
     
     return LoadingFrame, LoadingText, dotsConnection
@@ -261,6 +443,9 @@ Layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
     Scroll.CanvasSize = UDim2.new(0, Layout.AbsoluteContentSize.X, 0, 0)
 end)
 
+animatedCards = {}
+cardStrokes = {}
+
 for _, s in ipairs(Config.Scripts) do
     local Card = Instance.new("Frame", Scroll)
     Card.Name = s.Name
@@ -268,7 +453,9 @@ for _, s in ipairs(Config.Scripts) do
     Card.BackgroundColor3 = Config.Theme.Card
     Card.LayoutOrder = _
     Instance.new("UICorner", Card)
-    AddStroke(Card, 1)
+    local stroke = AddStroke(Card, 1)
+    table.insert(cardStrokes, stroke)
+    table.insert(animatedCards, Card)
     
     local I = Instance.new("TextLabel", Card)
     I.Text = s.Icon
@@ -312,7 +499,7 @@ for _, s in ipairs(Config.Scripts) do
     L.MouseButton1Click:Connect(function() if s.URL ~= "" then loadstring(game:HttpGet(s.URL))() end end)
 end
 
--- ==================== NEW MARQUEE TEXT ====================
+-- Marquee
 local MarqueeContainer = Instance.new("Frame", AppWindow)
 MarqueeContainer.Size = UDim2.new(1, -20, 0, 15)
 MarqueeContainer.Position = UDim2.new(0, 10, 1, -63)
@@ -347,7 +534,7 @@ Instance.new("UICorner", Footer)
 AddStroke(Footer, 1, Config.Theme.HackerGreen)
 
 local TerminalTxt = Instance.new("TextLabel", Footer)
-TerminalTxt.Size = UDim2.new(0.95, 0, 1, 0)
+TerminalTxt.Size = UDim2.new(0.75, 0, 1, 0)
 TerminalTxt.Position = UDim2.new(0.025, 0, 0, 0)
 TerminalTxt.BackgroundTransparency = 1
 TerminalTxt.TextColor3 = Config.Theme.HackerGreen
@@ -356,7 +543,23 @@ TerminalTxt.TextSize = 10
 TerminalTxt.TextXAlignment = "Left"
 TerminalTxt.Text = "> INITIALIZING MONITOR..."
 
--- Monitor Function
+-- Tombol toggle "C"
+local ToggleBackgroundBtn = Instance.new("TextButton", Footer)
+ToggleBackgroundBtn.Size = UDim2.new(0, 24, 0, 24)
+ToggleBackgroundBtn.Position = UDim2.new(0.88, 0, 0.5, -12)
+ToggleBackgroundBtn.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+ToggleBackgroundBtn.Text = "C"
+ToggleBackgroundBtn.Font = Enum.Font.GothamBlack
+ToggleBackgroundBtn.TextSize = 14
+ToggleBackgroundBtn.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", ToggleBackgroundBtn)
+
+ToggleBackgroundBtn.MouseButton1Click:Connect(function()
+    AnimBackgroundEnabled = not AnimBackgroundEnabled
+    updateVisualMode()
+end)
+
+-- Monitor
 local function StartMonitor()
     task.spawn(function()
         while task.wait(0.5) do
@@ -369,7 +572,7 @@ local function StartMonitor()
     end)
 end
 
--- Event Handlers
+-- Events
 MinimizedApp.MouseButton1Click:Connect(function() AppWindow.Visible = true MinimizedApp.Visible = false end)
 Search:GetPropertyChangedSignal("Text"):Connect(function()
     local q = Search.Text:lower()
@@ -378,9 +581,15 @@ Search:GetPropertyChangedSignal("Text"):Connect(function()
     end
 end)
 
--- ==================== INITIALIZATION (FIXED SEQUENCE) ====================
+-- Mulai animasi
+startRainLoop()
+startGlitchCycle()
+startBorderBlink()
+updateVisualMode()
+
+-- Initialize
 local function InitializeGUI()
-    AppWindow.Visible = true -- Tampilkan panel dulu
+    AppWindow.Visible = true
     local LoadingFrame, LoadingText, dotsConnection = RunLoadingScreen()
     
     task.spawn(function()
