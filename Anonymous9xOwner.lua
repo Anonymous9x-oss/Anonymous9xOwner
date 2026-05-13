@@ -28,7 +28,7 @@ local Config = {
         {Name = "Fly Noclip", Icon = "Main", URL = "https://pastebin.com/raw/ZrRwsPAe", Desc = "universal mobile fly with analog, keyboard with wasd"},
         {Name = "ESP Master", Icon = "Main", URL = "https://pastebin.com/raw/zdqzRRDe", Desc = "can see other players without range"},
         {Name = "Speed Walk", Icon = "Main", URL = "https://pastebin.com/raw/BAqbsBx0", Desc = "easily adjust your running speed"},
-        {Name = "Ghost Mode", Icon = "Main", URL = "https://pastebin.com/raw/A26bz69Q", Desc = "set yourself to be invisible so you can become a ghost equipped with speedboost"},
+        {Name = "Ghost Mode", Icon = "FE", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Ghostmode.lua", Desc = "set yourself to be invisible so you can become a ghost equipped with speedboost"},
         {Name = "No Clip", Icon = "Main", URL = "https://pastebin.com/raw/4Y3ium6c", Desc = "set you up so you can go through walls or other parts"},
         {Name = "Infinite Jump", Icon = "Main", URL = "https://pastebin.com/raw/qrMSz160", Desc = "you can do jump spam"},
         {Name = "Spectator Full", Icon = "Player", URL = "https://pastebin.com/raw/yYrK3kNi", Desc = "Spectator All Player with tp, follow, kick features"},
