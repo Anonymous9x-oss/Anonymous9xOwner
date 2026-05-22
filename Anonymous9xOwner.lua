@@ -49,7 +49,7 @@ local Config = {
         {Name = "Aimbot Universal", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Aimbot.lua", Desc = "can help you hit players with lock aim or aim assist V3"}, 
         {Name = "AutoWalk Universal", Icon = "Main", URL = "https://pastebin.com/raw/fbUrKRbG", Desc = "autowalk with full features, record manually"},
         {Name = "Jump Power", Icon = "Main", URL = "https://pastebin.com/raw/eiDMNdLC", Desc = "can adjust your jump height with particle effects"}, 
-        {Name = "AutoTp Universal", Icon = "Main", URL = "https://pastebin.com/raw/1Q3ZLFT6", Desc = "teleport by getting location manually"},
+        {Name = "AutoTp Universal", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/AutoTp.lua", Desc = "teleport by getting location manually"},
         {Name = "Fun3", Icon = "Vis/FE", URL = "https://pastebin.com/raw/Ld1WEWVt", Desc = "features for fun in one ui panel with 3 features"}, 
         {Name = "Freecam", Icon = "Main", URL = "https://pastebin.com/raw/sHvYLsGW", Desc = "fly freely with your camera like a drone"},
         {Name = "Executor", Icon = "Misc", URL = "https://pastebin.com/raw/bdPnW9mn", Desc = "loader executor that can run other scripts here"},
