@@ -58,7 +58,7 @@ local Config = {
         {Name = "KillAura Npc", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/KillAura.lua", Desc = "kill all npc with sigma aura that radiates from you, studs that can be adjusted flexibly"},
         {Name = "SambungKata", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Sambung%20kata.lua", Desc = "script for in sambung kata,taken from kkbi"},
         {Name = "SambungKata Collab", Icon = "Main", URL = "https://raw.githubusercontent.com/Fiqqzr7Lua/SCRIPTFIQQZR7/refs/heads/main/Fiqqzr7XAnonymous9x%20SAMBUNG%20KATA", Desc = "special collab with FIQQZR7"},
-        {Name = "FakeDonate Collab", Icon = "Chaos", URL = "https://pastefy.app/28xUWzZX/raw", Desc = "special collab with FIQQZR7"},
+        {Name = "Manager Detec", Icon = "Chaos", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/ManagerDetec.lua", Desc = "to scan full remote clients, marketplaces, etc."},
         {Name = "Xray", Icon = "Misc", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/XrayUniversal.lua", Desc = "can see through all parts, houses etc., without ui"},
         {Name = "Full Rtx", Icon = "Misc", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Rtx.lua", Desc = "full preset hd with filters like rtx panel"},
         {Name = "Spiderman Walk", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Walkonwall.lua", Desc = "FE can run on walls, etc., without ui"},
