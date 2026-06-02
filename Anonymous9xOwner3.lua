@@ -62,7 +62,8 @@ local Config = {
         {Name = "Xray", Icon = "Misc", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/XrayUniversal.lua", Desc = "can see through all parts, houses etc., without ui"},
         {Name = "Full Rtx", Icon = "Misc", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Rtx.lua", Desc = "full preset hd with filters like rtx panel"},
         {Name = "Spiderman Walk", Icon = "Main", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Walkonwall.lua", Desc = "FE can run on walls, etc., without ui"},
-        {Name = "Backdoor Tester", Icon = "Chaos", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Scan%20backdoor.lua", Desc = "tools and backdoor scan tests, if there is a backdoor, you can run require"}
+        {Name = "Backdoor Tester", Icon = "Chaos", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Scan%20backdoor.lua", Desc = "tools and backdoor scan tests, if there is a backdoor, you can run require"},
+        {Name = "Blox Fruit", Icon = "VIP", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/bf.lua", Desc = "Premium blox fruit script with complete features"}
     }
 }
 
