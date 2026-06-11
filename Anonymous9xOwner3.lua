@@ -26,7 +26,7 @@ local Config = {
     Scripts = {
         {Name = "Hybrid Attack", Icon = "Chaos", URL = "https://pastebin.com/raw/yTv5hwc5", Desc = "spam attack v1 automatic unlimited attack, click stop if you want to stop"},
         {Name = "Spam Armagedon", Icon = "Chaos", URL = "https://pastebin.com/raw/dXNtX5PB", Desc = "spam attack v2 with customizable attacks, with full scan"},
-        {Name = "Fly Noclip", Icon = "Main", URL = "https://pastebin.com/raw/ZrRwsPAe", Desc = "universal mobile fly with analog, keyboard with wasd"},
+        {Name = "Fly Noclip", Icon = "Main", URL = "https://pastebin.com/raw/WiqRQqBN", Desc = "universal mobile fly with analog, keyboard with wasd"},
         {Name = "ESP Master", Icon = "Main", URL = "https://pastebin.com/raw/zdqzRRDe", Desc = "can see other players without range"},
         {Name = "Speed Walk", Icon = "Main", URL = "https://pastebin.com/raw/BAqbsBx0", Desc = "easily adjust your running speed"},
         {Name = "Ghost Mode", Icon = "FE", URL = "https://raw.githubusercontent.com/Anonymous9x-oss/Anonymous9xProjectv1/refs/heads/main/Ghostmode.lua", Desc = "set yourself to be invisible so you can become a ghost equipped with speedboost"},
